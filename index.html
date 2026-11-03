@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=4">
+  <link rel="stylesheet" href="css/styles.css?v=8">
 
   <!-- Datos estructurados para Google (negocio local) -->
   <script type="application/ld+json">
@@ -93,22 +93,49 @@
     <!-- ============ 3. RECORRIDO POR EL LOCAL ============ -->
     <!-- Con JavaScript: las fotos se funden y se acercan lentamente mientras bajas la página (efecto "recorrido").
          Sin JavaScript o con "reducir movimiento" activado: se ven como fotos normales una debajo de otra. -->
-    <!-- TODO: confirmar de qué local son estas fotos (parecen de Los Coritos) -->
-    <section id="recorrido" class="recorrido" aria-label="Recorrido por nuestro local" style="--n:3">
+    <!-- TODO: confirmar que las fotos del interior son del local Los Coritos (la fachada sí lo es). Los números viejos del letrero están difuminados a propósito. -->
+    <section id="recorrido" class="recorrido" aria-label="Recorrido por nuestro local" style="--n:9">
       <div class="recorrido__escenario">
         <figure class="escena">
-          <img src="img/recepcion.jpg" width="1600" height="1200" alt="Recepción con paneles de madera, un sillón, el mostrador de mármol y un diente sonriente en la pared">
-          <figcaption><span class="escena__num">01</span><strong>Te recibimos en un espacio renovado</strong><span>Cómodo, limpio y pensado para ti.</span></figcaption>
+          <img src="img/fachada-lateral.jpg" width="1200" height="900" alt="Fachada del local con su letrero de Tomografía Dental y Radiografías Dentales">
+          <figcaption><span class="escena__num">01</span><strong>Local Los Coritos</strong><span>Av. Paseo de la Cultura, José Luis Bustamante y Rivero.</span></figcaption>
         </figure>
         <figure class="escena">
-          <img src="img/sala-evaluacion.jpg" width="1600" height="1200" alt="Sala de atención con camilla dental y equipo de rayos X" loading="lazy">
-          <figcaption><span class="escena__num">02</span><strong>Evaluación dental con cita previa</strong><span>Atención personalizada, con camilla y equipos propios.</span></figcaption>
+          <img src="img/fachada.jpg" width="1200" height="900" alt="Frente del local Dimsac Dent con sus dos entradas y letreros" loading="lazy">
+          <figcaption><span class="escena__num">02</span><strong>Te esperamos aquí</strong><span>Tomografía dental y radiología oral.</span></figcaption>
         </figure>
         <figure class="escena">
-          <img src="img/tomografo.jpg" width="1600" height="1200" alt="Equipo digital de radiografía panorámica y tomografía dental 3D" loading="lazy">
-          <figcaption><span class="escena__num">03</span><strong>Radiografía y tomografía digital</strong><span>Imágenes claras para tu diagnóstico.</span></figcaption>
+          <img src="img/recepcion.jpg" width="1400" height="1050" alt="Recepción con paneles de madera, un sillón, el mostrador de mármol y un diente sonriente en la pared" loading="lazy">
+          <figcaption><span class="escena__num">03</span><strong>Te recibimos en un espacio renovado</strong><span>Cómodo, limpio y pensado para ti.</span></figcaption>
         </figure>
-        <div class="recorrido__puntos" aria-hidden="true"><i></i><i></i><i></i></div>
+        <figure class="escena escena--vertical">
+          <img class="escena__fondo" src="img/puerta.jpg" alt="" aria-hidden="true" loading="lazy">
+          <img src="img/puerta.jpg" width="800" height="1066" alt="Puerta de vidrio con diseño de mármol y vetas doradas, entre paneles de madera con luz cálida" loading="lazy">
+          <figcaption><span class="escena__num">04</span><strong>Un ambiente cálido</strong><span>Madera, luz suave y detalles en dorado.</span></figcaption>
+        </figure>
+        <figure class="escena">
+          <img src="img/sala-evaluacion.jpg" width="1400" height="1050" alt="Sala de atención con camilla dental y equipo de rayos X" loading="lazy">
+          <figcaption><span class="escena__num">05</span><strong>Evaluación dental con cita previa</strong><span>Atención personalizada, con camilla y equipos propios.</span></figcaption>
+        </figure>
+        <figure class="escena">
+          <img src="img/tomografo.jpg" width="1400" height="1050" alt="Equipo digital de radiografía panorámica y tomografía dental 3D" loading="lazy">
+          <figcaption><span class="escena__num">06</span><strong>Radiografía y tomografía digital</strong><span>Imágenes claras para tu diagnóstico.</span></figcaption>
+        </figure>
+        <figure class="escena escena--vertical">
+          <img class="escena__fondo" src="img/pantalla.jpg" alt="" aria-hidden="true" loading="lazy">
+          <img src="img/pantalla.jpg" width="800" height="1067" alt="Equipo de rayos X con su pantalla táctil que muestra las opciones PAN, CEPH y 3D" loading="lazy">
+          <figcaption><span class="escena__num">07</span><strong>Un solo equipo, tres tipos de imagen</strong><span>Panorámica, cefalométrica y 3D.</span></figcaption>
+        </figure>
+        <figure class="escena">
+          <img src="img/ceph.jpg" width="1400" height="1050" alt="Brazo del equipo para radiografía cefalométrica" loading="lazy">
+          <figcaption><span class="escena__num">08</span><strong>Cefalometría digital</strong><span>Con análisis computarizado de la imagen.</span></figcaption>
+        </figure>
+        <figure class="escena escena--vertical">
+          <img class="escena__fondo" src="img/silla.jpg" alt="" aria-hidden="true" loading="lazy">
+          <img src="img/silla.jpg" width="800" height="1067" alt="Camilla dental con el logo de Dimsac Dent y equipo de rayos X en la pared" loading="lazy">
+          <figcaption><span class="escena__num">09</span><strong>Sala de atención</strong><span>Camilla propia y rayos X dental.</span></figcaption>
+        </figure>
+        <div class="recorrido__puntos" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
         <p class="recorrido__guia" aria-hidden="true">Sigue bajando ↓</p>
       </div>
     </section>
@@ -289,6 +316,6 @@
     <span>WhatsApp</span>
   </a>
 
-  <script src="js/main.js?v=4"></script>
+  <script src="js/main.js?v=8"></script>
 </body>
 </html>
