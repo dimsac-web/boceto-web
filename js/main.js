@@ -74,7 +74,7 @@ document.getElementById('anio').textContent = new Date().getFullYear();
 // Onda al presionar botones
 document.addEventListener('pointerdown', (e) => {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const b = e.target.closest('.boton, .menu-boton, .wa-flotante');
+  const b = e.target.closest('.boton, .menu-boton');
   if (!b) return;
   const r = b.getBoundingClientRect();
   const o = document.createElement('span');
@@ -101,4 +101,31 @@ document.addEventListener('pointerdown', (e) => {
     lista.forEach((it) => { if (it.isIntersecting) { mostrar(it.target); obs.unobserve(it.target); } });
   }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
   items.forEach((el) => obs.observe(el));
+})();
+
+// Burbuja de WhatsApp: aparece a los 5 s, se queda 8 s, se oculta y vuelve cada 25 s.
+// Si la persona la cierra, no vuelve a salir mientras siga en la página (ni al recargar en la misma pestaña).
+(function () {
+  const burbuja = document.getElementById('waBurbuja');
+  const cerrar = document.getElementById('waCerrar');
+  if (!burbuja || !cerrar) return;
+  let cerrada = false;
+  try { cerrada = sessionStorage.getItem('waBurbujaCerrada') === '1'; } catch (e) {}
+  if (cerrada) return;
+  let tOcultar, tMostrar;
+  const ocultar = () => { burbuja.classList.remove('visible'); };
+  const mostrar = () => {
+    if (cerrada) return;
+    burbuja.classList.add('visible');
+    tOcultar = setTimeout(ocultar, 8000);
+    tMostrar = setTimeout(mostrar, 8000 + 25000);
+  };
+  tMostrar = setTimeout(mostrar, 5000);
+  cerrar.addEventListener('click', () => {
+    cerrada = true; ocultar(); clearTimeout(tOcultar); clearTimeout(tMostrar);
+    try { sessionStorage.setItem('waBurbujaCerrada', '1'); } catch (e) {}
+  });
+  // Mientras la persona tiene el cursor o el foco en la burbuja, no se oculta
+  ['mouseenter', 'focusin'].forEach(ev => burbuja.addEventListener(ev, () => clearTimeout(tOcultar)));
+  ['mouseleave', 'focusout'].forEach(ev => burbuja.addEventListener(ev, () => { clearTimeout(tOcultar); tOcultar = setTimeout(ocultar, 3000); }));
 })();
