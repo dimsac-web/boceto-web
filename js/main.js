@@ -70,3 +70,35 @@ document.getElementById('anio').textContent = new Date().getFullYear();
   medir();
   pintar();
 })();
+
+// Onda al presionar botones
+document.addEventListener('pointerdown', (e) => {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const b = e.target.closest('.boton, .menu-boton, .wa-flotante');
+  if (!b) return;
+  const r = b.getBoundingClientRect();
+  const o = document.createElement('span');
+  o.className = 'onda';
+  o.style.left = (e.clientX - r.left) + 'px';
+  o.style.top = (e.clientY - r.top) + 'px';
+  b.appendChild(o);
+  o.addEventListener('animationend', () => o.remove());
+});
+
+// Aparición suave de las secciones al bajar
+(function () {
+  const items = Array.from(document.querySelectorAll('.revelar'));
+  if (!items.length) return;
+  const mostrar = (el) => el.classList.add('visto');
+  if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    items.forEach(mostrar); return;
+  }
+  items.forEach((el) => {
+    const hermanos = el.parentElement ? Array.from(el.parentElement.children).filter(c => c.classList.contains('revelar')) : [];
+    el.style.setProperty('--d', (Math.max(0, hermanos.indexOf(el)) * 0.1) + 's');
+  });
+  const obs = new IntersectionObserver((lista) => {
+    lista.forEach((it) => { if (it.isIntersecting) { mostrar(it.target); obs.unobserve(it.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+  items.forEach((el) => obs.observe(el));
+})();
