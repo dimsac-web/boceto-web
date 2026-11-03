@@ -9,16 +9,16 @@
   <meta name="description" content="Radiografías dentales en Arequipa: periapicales, panorámicas y cefalometrías desde S/ 15. Evaluación dental con cita previa. Escríbenos por WhatsApp al 947 707 736.">
   <meta name="theme-color" content="#111111">
   <meta property="og:title" content="Dimsac Dent | Radiografías dentales y atención odontológica en Arequipa">
-  <meta property="og:description" content="Siempre a la Vanguardia en Imagen y Salud Dental. Pide tu cita por WhatsApp.">
+  <meta property="og:description" content="Tecnología para tu diagnóstico. Atención para tu sonrisa. Pide tu cita por WhatsApp.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_PE">
+  <meta property="og:image" content="https://dimsac-web.github.io/boceto-web/img/recepcion.jpg">
   <!-- TODO: agregar <link rel="canonical"> y og:url cuando se tenga el dominio final -->
-  <!-- TODO: agregar og:image (foto del local o logo) cuando se tenga -->
   <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/styles.css?v=4">
 
   <!-- Datos estructurados para Google (negocio local) -->
   <script type="application/ld+json">
@@ -38,7 +38,7 @@
       { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "14:30", "closes": "19:00" },
       { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "17:00" }
     ]
-    /* TODO: agregar "url", "image", "logo", dirección exacta (streetAddress), "geo" y "hasMap" de cada local */
+    /* TODO: agregar "url", "logo", dirección exacta (streetAddress), "geo" y "hasMap" de cada local */
   }
   </script>
 </head>
@@ -60,7 +60,8 @@
 
       <nav id="menu" class="menu" aria-label="Menú principal">
         <a href="#servicios">Servicios</a>
-        <a href="#cita">Cómo pedir tu cita</a>
+        <a href="#cita">Tu cita</a>
+        <a href="#equipo">Equipo</a>
         <a href="#locales">Locales</a>
         <a href="#contacto">Contacto</a>
       </nav>
@@ -73,53 +74,107 @@
 
     <!-- ============ 2. INICIO ============ -->
     <section id="inicio" class="hero">
-      <div class="contenedor hero__contenido">
-        <p class="hero__lema">Siempre a la Vanguardia en Imagen y Salud Dental</p>
-        <h1>Radiografías dentales y atención odontológica en Arequipa</h1>
-        <p class="hero__texto">Radiografías desde S/ 15 y evaluación dental con cita previa. Escríbenos y te atendemos con gusto.</p>
-        <div class="botones">
-          <a class="boton boton--oro boton--grande" href="https://wa.me/51947707736" target="_blank" rel="noopener">Escríbenos por WhatsApp</a>
-          <a class="boton boton--borde boton--grande" href="tel:+51947707736">Llamar ahora: 947 707 736</a>
+      <div class="contenedor hero__fila">
+        <div class="hero__contenido">
+          <p class="hero__lema">Radiografías dentales en Arequipa</p>
+          <h1>Tecnología para tu diagnóstico. <span class="oro">Atención para tu sonrisa.</span></h1>
+          <p class="hero__texto">Radiografías desde S/ 15 y evaluación dental con cita previa. Escríbenos y te atendemos con gusto.</p>
+          <div class="botones">
+            <a class="boton boton--oro boton--grande" href="https://wa.me/51947707736" target="_blank" rel="noopener">Escríbenos por WhatsApp</a>
+            <a class="boton boton--borde boton--grande" href="tel:+51947707736">Llamar ahora: 947 707 736</a>
+          </div>
+        </div>
+        <div class="hero__foto">
+          <img src="img/puerta.jpg" width="1000" height="1333" alt="Entrada de vidrio con diseño de mármol, rodeada de paneles de madera con luz cálida" fetchpriority="high">
         </div>
       </div>
-      <!-- TODO: foto del local / equipo / consultorio para el hero (img/hero.jpg, comprimida) -->
     </section>
 
-    <!-- ============ 3. SERVICIOS ============ -->
+    <!-- ============ 3. RECORRIDO POR EL LOCAL ============ -->
+    <!-- Con JavaScript: las fotos se funden y se acercan lentamente mientras bajas la página (efecto "recorrido").
+         Sin JavaScript o con "reducir movimiento" activado: se ven como fotos normales una debajo de otra. -->
+    <!-- TODO: confirmar de qué local son estas fotos (parecen de Los Coritos) -->
+    <section id="recorrido" class="recorrido" aria-label="Recorrido por nuestro local" style="--n:3">
+      <div class="recorrido__escenario">
+        <figure class="escena">
+          <img src="img/recepcion.jpg" width="1600" height="1200" alt="Recepción con paneles de madera, un sillón, el mostrador de mármol y un diente sonriente en la pared">
+          <figcaption><span class="escena__num">01</span><strong>Te recibimos en un espacio renovado</strong><span>Cómodo, limpio y pensado para ti.</span></figcaption>
+        </figure>
+        <figure class="escena">
+          <img src="img/sala-evaluacion.jpg" width="1600" height="1200" alt="Sala de atención con camilla dental y equipo de rayos X" loading="lazy">
+          <figcaption><span class="escena__num">02</span><strong>Evaluación dental con cita previa</strong><span>Atención personalizada, con camilla y equipos propios.</span></figcaption>
+        </figure>
+        <figure class="escena">
+          <img src="img/tomografo.jpg" width="1600" height="1200" alt="Equipo digital de radiografía panorámica y tomografía dental 3D" loading="lazy">
+          <figcaption><span class="escena__num">03</span><strong>Radiografía y tomografía digital</strong><span>Imágenes claras para tu diagnóstico.</span></figcaption>
+        </figure>
+        <div class="recorrido__puntos" aria-hidden="true"><i></i><i></i><i></i></div>
+        <p class="recorrido__guia" aria-hidden="true">Sigue bajando ↓</p>
+      </div>
+    </section>
+
+    <!-- ============ 4. SERVICIOS ============ -->
     <section id="servicios" class="seccion">
       <div class="contenedor">
         <h2>Nuestros servicios</h2>
         <p class="seccion__intro">Precios en soles. Todos los precios son &ldquo;desde&rdquo;.</p>
 
-        <div class="tarjetas">
-          <article class="tarjeta">
-            <h3>Radiografías dentales</h3>
-            <p>Tiempo aproximado: 30 minutos.</p>
-            <ul class="precios">
-              <li><span>Intraorales (periapical y bitewing)</span> <strong>desde S/ 15</strong></li>
-              <li><span>Extraorales digitales</span> <strong>desde S/ 35</strong></li>
-              <li><span>Panorámica</span> <strong>S/ 35</strong></li>
-              <li><span>Análisis cefalométricos computarizados (Steiner, Ricketts, McNamara, Jarabak, Fishman)</span> <strong>S/ 15</strong></li>
-            </ul>
-            <p>También realizamos radiografías oclusales.</p>
-            <!-- TODO: precio de radiografía oclusal y de la serie completa -->
-            <!-- TODO: lista completa de radiografías extraorales -->
-            <!-- TODO: lista completa de precios (la dueña la tiene en imágenes) -->
-            <p class="todo">TODO: precio de oclusal, serie completa y lista completa de extraorales</p>
-            <a class="boton boton--oro" href="https://wa.me/51947707736?text=Hola%2C%20quiero%20consultar%20por%20radiograf%C3%ADas%20dentales" target="_blank" rel="noopener">Consultar por WhatsApp</a>
+        <div class="servicios">
+          <article class="servicio">
+            <svg class="servicio__icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 3.500c-2.200 0-3.800 1.800-3.800 4.300 0 2.200.9 3.300 1.500 5.200.6 1.900.6 6.500 2.300 6.500 1.600 0 1.400-4.200 3-4.200s1.400 4.200 3 4.200c1.700 0 1.700-4.600 2.300-6.500.6-1.900 1.500-3 1.500-5.200 0-2.500-1.600-4.300-3.800-4.300-1.700 0-2.300.8-3 .8s-1.300-.8-3-.8z"/></svg>
+            <h3>Radiografías intraorales</h3>
+            <p>Periapical y bitewing. Imagen detallada de una zona de la boca.</p>
+            <p class="servicio__precio">desde S/ 15</p>
           </article>
 
-          <article class="tarjeta">
-            <h3>Evaluación dental con cita previa</h3>
-            <p>Atención personalizada. Contamos con camilla y los equipos necesarios para revisar a cada paciente.</p>
-            <p>Esta atención se realiza solo con cita previa.</p>
-            <a class="boton boton--oro" href="https://wa.me/51947707736?text=Hola%2C%20quiero%20pedir%20una%20cita%20para%20evaluaci%C3%B3n%20dental" target="_blank" rel="noopener">Pedir cita por WhatsApp</a>
+          <article class="servicio">
+            <svg class="servicio__icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9c0 5 4 9 9 9s9-4 9-9M7 11v2M10 12.500v2M14 12.500v2M17 11v2"/></svg>
+            <h3>Radiografía panorámica</h3>
+            <p>Toda la boca en una sola imagen.</p>
+            <p class="servicio__precio">S/ 35</p>
           </article>
+
+          <article class="servicio">
+            <svg class="servicio__icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="12" cy="10.500" r="3.200"/><path d="M6 20c1-3 3-4.500 6-4.500s5 1.500 6 4.500"/></svg>
+            <h3>Extraorales digitales</h3>
+            <p>Radiografías digitales de cráneo y rostro.</p>
+            <p class="servicio__precio">desde S/ 35</p>
+          </article>
+
+          <article class="servicio">
+            <svg class="servicio__icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V5M4 20h16M4 20L18 8M9 20a5.500 5.500 0 0 0-1.800-4"/></svg>
+            <h3>Cefalometría computarizada</h3>
+            <p>Análisis Steiner, Ricketts, McNamara, Jarabak y Fishman.</p>
+            <p class="servicio__precio">S/ 15</p>
+          </article>
+
+          <article class="servicio">
+            <svg class="servicio__icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 4.500v9L12 21l-8-4.500v-9L12 3zM12 12l8-4.500M12 12v9M12 12L4 7.500"/></svg>
+            <h3>Tomografía dental 3D (Cone Beam)</h3>
+            <p>Imagen en 3D de dientes y hueso.</p>
+            <!-- TODO: precio de la tomografía -->
+            <p class="todo">TODO: precio de tomografía</p>
+          </article>
+
+          <article class="servicio servicio--cita">
+            <svg class="servicio__icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M9 15l2 2 4-4"/></svg>
+            <h3>Evaluación dental</h3>
+            <p>Atención personalizada, con camilla y equipos propios. <strong>Solo con cita previa.</strong></p>
+            <a class="boton boton--negro" href="https://wa.me/51947707736?text=Hola%2C%20quiero%20pedir%20una%20cita%20para%20evaluaci%C3%B3n%20dental" target="_blank" rel="noopener">Pedir cita por WhatsApp</a>
+          </article>
+        </div>
+
+        <p class="servicios__nota">Tiempo aproximado de las radiografías: 30 minutos. También realizamos radiografías oclusales.</p>
+        <!-- TODO: precio de radiografía oclusal y de la serie completa -->
+        <!-- TODO: lista completa de radiografías extraorales y de precios (la dueña la tiene en imágenes) -->
+        <p class="todo">TODO: precio de oclusal, serie completa y lista completa de extraorales</p>
+        <div class="botones">
+          <a class="boton boton--oro" href="https://wa.me/51947707736?text=Hola%2C%20quiero%20consultar%20por%20radiograf%C3%ADas%20dentales" target="_blank" rel="noopener">Consultar por WhatsApp</a>
         </div>
       </div>
     </section>
 
-    <!-- ============ 4. CÓMO PEDIR TU CITA ============ -->
+    <!-- ============ 5. CÓMO PEDIR TU CITA ============ -->
     <section id="cita" class="seccion seccion--oscura">
       <div class="contenedor">
         <h2>Cómo pedir tu cita</h2>
@@ -135,7 +190,38 @@
       </div>
     </section>
 
-    <!-- ============ 5. NUESTROS LOCALES ============ -->
+    <!-- ============ 6. CONOCE A NUESTRO EQUIPO ============ -->
+    <!-- Para agregar a una persona: copiar un bloque <article class="persona">, cambiar foto (img/equipo-nombre.jpg), nombre, cargo y colegiatura.
+         Solo publicar fotos y datos con el permiso de cada profesional. -->
+    <section id="equipo" class="seccion seccion--crema">
+      <div class="contenedor">
+        <h2>Conoce a nuestro equipo</h2>
+        <p class="seccion__intro">Doctores y radiólogos que cuidan de ti en cada visita.</p>
+
+        <div class="equipo">
+          <article class="persona">
+            <div class="persona__foto persona__foto--vacia" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="8.500" r="4"/><path d="M4 21c1-4.500 4-6.500 8-6.500s7 2 8 6.500"/></svg>
+            </div>
+            <p class="todo">TODO: foto, nombre, cargo, especialidad y colegiatura (opcional)</p>
+          </article>
+          <article class="persona">
+            <div class="persona__foto persona__foto--vacia" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="8.500" r="4"/><path d="M4 21c1-4.500 4-6.500 8-6.500s7 2 8 6.500"/></svg>
+            </div>
+            <p class="todo">TODO: foto, nombre, cargo, especialidad y colegiatura (opcional)</p>
+          </article>
+          <article class="persona">
+            <div class="persona__foto persona__foto--vacia" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="8.500" r="4"/><path d="M4 21c1-4.500 4-6.500 8-6.500s7 2 8 6.500"/></svg>
+            </div>
+            <p class="todo">TODO: foto, nombre, cargo, especialidad y colegiatura (opcional)</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 7. NUESTROS LOCALES ============ -->
     <section id="locales" class="seccion">
       <div class="contenedor">
         <h2>Nuestros locales</h2>
@@ -165,7 +251,7 @@
       </div>
     </section>
 
-    <!-- ============ 6. CONTACTO ============ -->
+    <!-- ============ 8. CONTACTO ============ -->
     <section id="contacto" class="seccion seccion--crema">
       <div class="contenedor">
         <h2>Contacto</h2>
@@ -179,7 +265,7 @@
     </section>
   </main>
 
-  <!-- ============ 7. PIE DE PÁGINA ============ -->
+  <!-- ============ 9. PIE DE PÁGINA ============ -->
   <footer class="pie">
     <div class="contenedor pie__fila">
       <div>
@@ -203,7 +289,6 @@
     <span>WhatsApp</span>
   </a>
 
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=4"></script>
 </body>
 </html>
-
