@@ -40,7 +40,7 @@ document.getElementById('anio').textContent = new Date().getFullYear();
     const t = p * (N - 0.35); // posición en "escenas"
 
     escenas.forEach((el, i) => {
-      const img = el.querySelector('img');
+      const img = el.querySelector('img:not(.escena__fondo)');
       const opac = i === 0 ? 1 : limitar((t - i + 0.3) / 0.3, 0, 1);
       const s = limitar((t - (i - 0.3)) / 1.5, 0, 1);
       const dir = i % 2 ? -1 : 1;
