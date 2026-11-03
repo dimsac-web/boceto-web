@@ -365,3 +365,51 @@ h3 { font-weight: 600; }
 }
 .wa-burbuja__cerrar:hover { background: #f3ecd8; }
 @media (prefers-reduced-motion: reduce) { .wa-burbuja, .wa-burbuja.visible { transition: none; transform: none; } }
+
+/* ===== v11: lista de precios ===== */
+.seccion__intro a { color: var(--negro); text-decoration-color: var(--oro); text-decoration-thickness: 3px; text-underline-offset: 3px; }
+.servicio__precio small { font-size: 1.125rem; font-weight: 600; color: var(--gris); }
+.precios-lista { display: grid; gap: 14px; margin-top: 24px; }
+.grupo { background: var(--blanco); border: 2px solid #eadfc0; border-radius: var(--radio); overflow: hidden; }
+.grupo summary {
+  list-style: none; cursor: pointer; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 14px;
+  min-height: 64px; padding: 14px 56px 14px 20px; position: relative;
+  font-family: "Manrope", "Segoe UI", system-ui, Arial, sans-serif; font-weight: 700; font-size: 1.25rem; color: var(--negro);
+}
+.grupo summary::-webkit-details-marker { display: none; }
+.grupo summary span { font-family: "Inter", "Segoe UI", system-ui, Arial, sans-serif; font-weight: 600; font-size: 1.125rem; background: var(--negro); color: var(--oro); padding: 2px 12px; border-radius: 999px; white-space: nowrap; }
+.grupo summary::after {
+  content: ""; position: absolute; right: 22px; top: 50%; width: 12px; height: 12px; margin-top: -9px;
+  border-right: 3px solid var(--negro); border-bottom: 3px solid var(--negro); transform: rotate(45deg); transition: transform .25s ease;
+}
+.grupo[open] summary::after { transform: rotate(-135deg); margin-top: -3px; }
+.grupo[open] summary { border-bottom: 4px solid var(--oro); }
+.grupo summary:hover { background: #fdf6e3; }
+.grupo summary:focus-visible { outline: 4px solid var(--negro); outline-offset: -4px; }
+.tabla-envoltura { overflow-x: auto; }
+.tabla-precios { width: 100%; border-collapse: collapse; font-size: 1.125rem; }
+.tabla-precios th, .tabla-precios td { padding: 12px 16px; text-align: left; border-bottom: 1px solid #f0e8d2; vertical-align: top; }
+.tabla-precios thead th { font-size: 1.125rem; color: var(--gris); font-weight: 600; background: #fbf6e8; }
+.tabla-precios tbody th { font-weight: 400; color: var(--texto); }
+.tabla-precios td { white-space: nowrap; font-weight: 600; text-align: right; width: 1%; }
+.tabla-precios thead th:not(:first-child) { text-align: right; }
+.tabla-precios tbody tr:last-child th, .tabla-precios tbody tr:last-child td { border-bottom: 0; }
+.tabla-precios tbody tr:hover { background: #fffaf0; }
+.js .grupo[open] .tabla-envoltura { animation: subir .35s ease both; }
+@media (prefers-reduced-motion: reduce) { .js .grupo[open] .tabla-envoltura { animation: none; } .grupo summary::after { transition: none; } }
+
+/* Cabecera: que entren los 6 enlaces en pantallas medianas y que "Menú" no baje de línea en celulares chicos */
+@media (max-width: 399px) {
+  .marca { gap: 6px; }
+  .marca__logo { height: 36px; }
+  .marca__texto { font-size: 1.05rem; letter-spacing: .05em; }
+  .menu-boton { padding: 0 14px; }
+}
+@media (min-width: 900px) and (max-width: 1199px) {
+  .cabecera__wa { display: none !important; }
+  .menu { gap: 16px; }
+  .menu a { font-size: 1.125rem; }
+}
+@media (min-width: 900px) and (max-width: 1023px) {
+  .marca__texto { display: none; }
+}
