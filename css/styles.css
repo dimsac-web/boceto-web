@@ -270,3 +270,69 @@ p.todo { display: block; }
   .recorrido--anim .recorrido__puntos { top: 24px; bottom: auto; left: 16px; right: auto; justify-content: flex-start; gap: 6px; }
   .recorrido__puntos i { width: 9px; height: 9px; }
 }
+
+/* ===== v9: tipografía más fina, movimiento en botones, aparición suave, red de profesionales ===== */
+h1, h2 { font-weight: 700; letter-spacing: -.01em; }
+h3 { font-weight: 600; }
+.marca__texto, .boceto, .paso__num, .servicio__precio { font-weight: 700; }
+.boton { font-weight: 600; letter-spacing: .005em; }
+.menu a, .menu-boton { font-weight: 500; }
+.hero__lema { font-weight: 600; }
+
+/* Botones: se elevan al pasar el cursor, se hunden al presionar y dejan una onda */
+.boton, .menu-boton, .wa-flotante { position: relative; overflow: hidden; transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease; -webkit-tap-highlight-color: transparent; }
+@media (hover: hover) {
+  .boton:hover, .wa-flotante:hover { transform: translateY(-3px); box-shadow: 0 10px 22px rgba(0,0,0,.25); }
+}
+.boton:active, .menu-boton:active, .wa-flotante:active { transform: translateY(1px) scale(.96); box-shadow: 0 2px 6px rgba(0,0,0,.25); transition-duration: .06s; }
+.onda { position: absolute; border-radius: 50%; width: 20px; height: 20px; margin: -10px 0 0 -10px; background: rgba(255,255,255,.55); pointer-events: none; animation: onda .6s ease-out forwards; }
+.boton--oro .onda, .servicio--cita .onda { background: rgba(0,0,0,.22); }
+@keyframes onda { to { transform: scale(22); opacity: 0; } }
+
+/* Botón de WhatsApp: un latido suave para llamar la atención */
+.wa-flotante::after { content: ""; position: absolute; inset: -3px; border-radius: inherit; border: 3px solid var(--oro); opacity: 0; animation: latido 3.2s ease-out 2s infinite; pointer-events: none; }
+@keyframes latido { 0% { transform: scale(1); opacity: .8; } 60%, 100% { transform: scale(1.35, 1.6); opacity: 0; } }
+
+/* Tarjetas: se elevan un poco al pasar el cursor */
+.servicio, .tarjeta, .persona { transition: transform .25s ease, box-shadow .25s ease; }
+@media (hover: hover) {
+  .servicio:hover, .tarjeta:hover, .persona:hover { transform: translateY(-4px); box-shadow: 0 12px 26px rgba(0,0,0,.12); }
+}
+
+/* Aparición al bajar (solo si hay JavaScript; sin él todo se ve normal) */
+.js .revelar { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; transition-delay: var(--d, 0s); }
+.js .revelar.visto { opacity: 1; transform: none; }
+@media (hover: hover) {
+  .js .servicio.visto:hover, .js .tarjeta.visto:hover, .js .persona.visto:hover { transition-delay: 0s; transform: translateY(-4px); }
+}
+
+/* Entrada del inicio */
+.js .hero__contenido > * { animation: subir .7s ease both; }
+.js .hero__contenido > :nth-child(2) { animation-delay: .1s; }
+.js .hero__contenido > :nth-child(3) { animation-delay: .2s; }
+.js .hero__contenido > :nth-child(4) { animation-delay: .3s; }
+.js .hero__foto { animation: subir .9s ease .2s both; }
+@keyframes subir { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+
+/* Red de profesionales */
+.dos-tipos { display: grid; gap: 16px; margin-top: 24px; }
+.tipo { border-radius: var(--radio); padding: 20px 22px; border: 2px solid #eadfc0; background: var(--blanco); }
+.tipo h3 { margin-bottom: .3em; }
+.tipo p { margin: 0; color: var(--gris); }
+.tipo--propio { border-left: 8px solid var(--oro); }
+.tipo--externo { border-left: 8px solid var(--negro); }
+.equipo--red { margin-top: 24px; }
+.persona--externa { background: var(--blanco); position: relative; }
+.etiqueta { display: inline-block; background: var(--negro); color: var(--blanco); font-size: 1.125rem; font-weight: 600; padding: 4px 12px; border-radius: 999px; margin-bottom: 12px; }
+@media (min-width: 700px) {
+  .dos-tipos { grid-template-columns: 1fr 1fr; }
+  .equipo--red { grid-template-columns: repeat(2, 1fr); max-width: 760px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .revelar { opacity: 1; transform: none; transition: none; }
+  .js .hero__contenido > *, .js .hero__foto { animation: none; }
+  .wa-flotante::after, .onda { display: none; }
+  .boton, .menu-boton, .wa-flotante, .servicio, .tarjeta, .persona { transition: none; }
+  .boton:hover, .wa-flotante:hover, .servicio:hover, .tarjeta:hover, .persona:hover { transform: none; }
+}
