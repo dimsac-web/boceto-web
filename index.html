@@ -8,7 +8,10 @@
   <title>Radiografías dentales Arequipa | Dimsac Dent</title>
   <meta name="description" content="Radiografías dentales y tomografía 3D en Arequipa: periapicales desde S/ 15, panorámica desde S/ 25 y tomografía desde S/ 160. Escríbenos por WhatsApp al 947 707 736.">
   <meta name="theme-color" content="#111111">
-  <script>document.documentElement.classList.add("js");</script>
+  <script>
+    document.documentElement.classList.add("js");
+    try { var t = localStorage.getItem("tema"); if (t === "dark" || t === "light") document.documentElement.setAttribute("data-theme", t); } catch (e) {}
+  </script>
   <meta property="og:title" content="Dimsac Dent | Radiografías dentales y tomografía 3D en Arequipa">
   <meta property="og:description" content="Tecnología para tu diagnóstico. Atención para tu sonrisa. Pide tu cita por WhatsApp.">
   <meta property="og:type" content="website">
@@ -19,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=12">
+  <link rel="stylesheet" href="css/styles.css?v=13">
 
   <!-- Datos estructurados para Google (negocio local) -->
   <script type="application/ld+json">
@@ -37,9 +40,8 @@
     "currenciesAccepted": "PEN",
     "address": { "@type": "PostalAddress", "addressLocality": "Arequipa", "addressCountry": "PE" },
     "openingHoursSpecification": [
-      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "13:00" },
-      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "14:30", "closes": "19:00" },
-      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "17:00" }
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "09:00", "closes": "13:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "14:30", "closes": "19:00" }
     ]
     /* TODO: agregar "url", "logo", dirección exacta (streetAddress), "geo" y "hasMap" de cada local */
   }
@@ -58,6 +60,11 @@
         <img class="marca__logo" src="img/logo.png" alt="Logo de Dimsac Dent" height="48">
         <span class="marca__texto">DIMSAC <b>DENT</b></span>
       </a>
+
+      <button class="tema-boton" id="temaBoton" type="button" aria-label="Cambiar a modo oscuro">
+        <svg class="tema-boton__luna" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
+        <svg class="tema-boton__sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
 
       <button class="menu-boton" id="menuBoton" aria-expanded="false" aria-controls="menu">Menú</button>
 
@@ -207,7 +214,7 @@
     <section id="precios" class="seccion seccion--crema">
       <div class="contenedor">
         <h2 class="revelar">Lista de precios</h2>
-        <p class="seccion__intro">Precios en soles (S/). <strong>Impresa:</strong> te entregamos la radiografía en placa o papel. <strong>Digital:</strong> te la enviamos por WhatsApp. Toca cada grupo para ver sus precios.</p>
+        <p class="seccion__intro">Precios en soles (S/). <strong>Impresa:</strong> te entregamos la radiografía en placa o papel. <strong>Digital:</strong> te la enviamos por WhatsApp. Toca cada grupo para ver sus precios y <strong>toca un estudio para consultarlo por WhatsApp</strong>.</p>
 
         <div class="precios-lista">
           <details class="grupo" open>
@@ -216,11 +223,11 @@
               <table class="tabla-precios">
                 <thead><tr><th scope="col">Estudio</th><th scope="col">Impresa</th><th scope="col">Digital</th></tr></thead>
                 <tbody>
-                  <tr><th scope="row">Periapical</th><td>S/ 15</td><td>S/ 20</td></tr>
-                  <tr><th scope="row">Bitewing</th><td>S/ 15</td><td>S/ 20</td></tr>
-                  <tr><th scope="row">Oclusal (superior o inferior, cada una)</th><td>S/ 30</td><td>—</td></tr>
-                  <tr><th scope="row">Seriada (14 periapicales)</th><td>S/ 190</td><td>—</td></tr>
-                  <tr><th scope="row">Seriada completa (14 periapicales + 4 bitewing)</th><td>S/ 250</td><td>—</td></tr>
+                  <tr class="fila-wa"><th scope="row"><a href="https://wa.me/51947707736?text=Hola%2C%20quiero%20consultar%20por%3A%20Periapical%20%28Radiograf%C3%ADas%20intraorales%29.%20%C2%BFQu%C3%A9%20horarios%20tienen%20disponibles%3F" target="_blank" rel="noopener">Periapical<svg class="fila-wa__icono" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3C9.4 3 4 8.3 4 14.9c0 2.3.7 4.5 1.9 6.3L4 29l8-2.1c1.2.6 2.6.9 4 .9 6.6 0 12-5.3 12-11.9S22.6 3 16 3zm0 21.8c-1.3 0-2.5-.3-3.6-.9l-.5-.3-4.7 1.2 1.3-4.6-.3-.5a9.7 9.7 0 0 1-1.5-5.2C6.7 9.7 10.9 5.6 16 5.6s9.3 4.1 9.3 9.3-4.2 9.9-9.3 9.9z"/></svg><span class="sr">, consultar por WhatsApp</span></a></th><td>S/ 15</td><td>S/ 20</td></tr>
+                  <tr class="fila-wa"><th scope="row"><a href="https://wa.me/51947707736?text=Hola%2C%20quiero%20consultar%20por%3A%20Bitewing%20%28Radiograf%C3%ADas%20intraorales%29.%20%C2%BFQu%C3%A9%20horarios%20tienen%20disponibles%3F" target="_blank" rel="noopener">Bitewing<svg class="fila-wa__icono" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3C9.4 3 4 8.3 4 14.9c0 2.3.7 4.5 1.9 6.3L4 29l8-2.1c1.2.6 2.6.9 4 .9 6.6 0 12-5.3 12-11.9S22.6 3 16 3zm0 21.8c-1.3 0-2.5-.3-3.6-.9l-.5-.3-4.7 1.2 1.3-4.6-.3-.5a9.7 9.7 0 0 1-1.5-5.2C6.7 9.7 10.9 5.6 16 5.6s9.3 4.1 9.3 9.3-4.2 9.9-9.3 9.9z"/></svg><span class="sr">, consultar por WhatsApp</span></a></th><td>S/ 15</td><td>S/ 20</td></tr>
+                  <tr class="fila-wa"><th scope="row"><a href="https://wa.me/51947707736?text=Hola%2C%20quiero%20consultar%20por%3A%20Oclusal%20%28superior%20o%20inferior%2C%20cada%20una%29%20%28Radiograf%C3%ADas%20intraorales%29.%20%C2%BFQu%C3%A9%20horarios%20tienen%20disponibles%3F" target="_blank" rel="noopener">Oclusal (superior o inferior, cada una)<svg class="fila-wa__icono" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3C9.4 3 4 8.3 4 14.9c0 2.3.7 4.5 1.9 6.3L4 29l8-2.1c1.2.6 2.6.9 4 .9 6.6 0 12-5.3 12-11.9S22.6 3 16 3zm0 21.8c-1.3 0-2.5-.3-3.6-.9l-.5-.3-4.7 1.2 1.3-4.6-.3-.5a9.7 9.7 0 0 1-1.5-5.2C6.7 9.7 10.9 5.6 16 5.6s9.3 4.1 9.3 9.3-4.2 9.9-9.3 9.9z"/></svg><span class="sr">, consultar por WhatsApp</span></a></th><td>S/ 30</td><td>—</td></tr>
+                  <tr class="fila-wa"><th scope="row"><a href="https://wa.me/51947707736?text=Hola%2C%20quiero%20consultar%20por%3A%20Seriada%20%2814%20periapicales%29%20%28Radiograf%C3%ADas%20intraorales%29.%20%C2%BFQu%C3%A9%20horarios%20tienen%20disponibles%3F" target="_blank" rel="noopener">Seriada (14 periapicales)<svg class="fila-wa__icono" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3C9.4 3 4 8.3 4 14.9c0 2.3.7 4.5 1.9 6.3L4 29l8-2.1c1.2.6 2.6.9 4 .9 6.6 0 12-5.3 12-11.9S22.6 3 16 3zm0 21.8c-1.3 0-2.5-.3-3.6-.9l-.5-.3-4.7 1.2 1.3-4.6-.3-.5a9.7 9.7 0 0 1-1.5-5.2C6.7 9.7 10.9 5.6 16 5.6s9.3 4.1 9.3 9.3-4.2 9.9-9.3 9.9z"/></svg><span class="sr">, consultar por WhatsApp</span></a></th><td>S/ 190</td><td>—</td></tr>
+                  <tr class="fila-wa"><th scope="row"><a href="https://wa.me/51947707736?text=Hola%2C%20quiero%20consultar%20por%3A%20Seriada%20completa%20%2814%20periapicales%20%2B%204%20bitewing%29%20%28Radiograf%C3%ADas%20intraorales%29.%20%C2%BFQu%C3%A9%20horarios%20tienen%20disponibles%3F" target="_blank" rel="noopener">Seriada completa (14 periapicales + 4 bitewing)<svg class="fila-wa__icono" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3C9.4 3 4 8.3 4 14.9c0 2.3.7 4.5 1.9 6.3L4 29l8-2.1c1.2.6 2.6.9 4 .9 6.6 0 12-5.3 12-11.9S22.6 3 16 3zm0 21.8c-1.3 0-2.5-.3-3.6-.9l-.5-.3-4.7 1.2 1.3-4.6-.3-.5a9.7 9.7 0 0 1-1.5-5.2C6.7 9.7 10.9 5.6 16 5.6s9.3 4.1 9.3 9.3-4.2 9.9-9.3 9.9z"/></svg><span class="sr">, consultar por WhatsApp</span></a></th><td>S/ 250</td><td>—</td></tr>
                 </tbody>
               </table>
             </div>
@@ -232,14 +239,14 @@
               <table class="tabla-precios">
                 <thead><tr><th scope="col">Estudio</th><th scope="col">Impresa</th><th scope="col">Digital</th></tr></thead>
                 <tbody>
-                  <tr><th scope="row">Panorámica</th><td>S/ 40</td><td>S/ 25</td></tr>
-                  <tr><th scope="row">Telerradiografía lateral</th><td>S/ 40</td><td>S/ 25</td></tr>
-                  <tr><th scope="row">Telerradiografía frontal</th><td>S/ 40</td><td>S/ 25</td></tr>
-                  <tr><th scope="row">ATM (boca cerrada / boca abierta)</th><td>S/ 40</td><td>S/ 25</td></tr>
-                  <tr><th scope="row">Waters (senos maxilares)</th><td>S/ 40</td><td>S/ 25</td></tr>
-                  <tr><th scope="row">Posteroanterior</th><td>S/ 40</td><td>S/ 25</td></tr>
-                  <tr><th scope="row">Carpal (edad ósea)</th><td>S/ 40</td><td>S/ 25</td></tr>
-                  <tr><th scope="row">Arco cigomático</th><td>S/ 40</td><td>S/ 25</td></tr>
+                  <tr class="fila-wa"><th scope="row"><a href="https://wa.me/51947707736?text=Hola%2C%20quiero%20consultar%20por%3A%20Panor%C3%A1mica%20%28Radiograf%C3%ADas%20extraorales%29.%20%C2%BFQu%C3%A9%20horarios%20tienen%20disponibles%3F" target="_blank" rel="noopener">Panorámica<svg class="fila-wa__icono" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3C9.4 3 4 8.3 4 14.9c0 2.3.7 4.5 1.9 6.3L4 29l8-2.1c1.2.6 2.6.9 4 .9 6.6 0 12-5.3 12-11.9S22.6 3 16 3zm0 21.8c-1.3 0-2.5-.3-3.6-.9l-.5-.3-4.7 1.2 1.3-4.6-.3-.5a9.7 9.7 0 0 1-1.5-5.2C6.7 9.7 10.9 5.6 16 5.6s9.3 4.1 9.3 9.3-4.2 9.9-9.3 9.9z"/></svg><span class="sr">, consultar por WhatsApp</span></a></th><td>S/ 40</td><td>S/ 25</td></tr>
+                  <tr class="fila-wa"><th scope="row"><a href="https://wa.me/51947707736?text=Hola%2C%20quiero%20consultar%20por%3A%20Telerradiograf%C3%ADa%20lateral%20%28Radiograf%C3%ADas%20extraorales%29.%20%C2%BFQu%C3%A9%20horarios%20tienen%20disponibles%3F" target="_blank" rel="noopener">Telerradiografía lateral<svg class="fila-wa__icono" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3C9.4 3 4 8.3 4 14.9c0 2.3.7 4.5 1.9 6.3L4 29l8-2.1c1.2.6 2.6.9 4 .9 6.6 0 12-5.3 12-11.9S22.6 3 16 3zm0 21.8c-1.3 0-2.5-.3-3.6-.9l-.5-.3-4.7 1.2 1.3-4.6-.3-.5a9.7 9.7 0 0 1-1.5-5.2C6.7 9.7 10.9 5.6 16 5.6s9.3 4.1 9.3 9.3-4.2 9.9-9.3 9.9z"/></svg><span class="sr">, consultar por WhatsApp</span></a></th><td>S/ 40</td><td>S/ 25</td></tr>
+                  <tr class="fila-wa"><th scope="row"><a href="https://wa.me/51947707736?text=Hola%2C%20quiero%20consultar%20por%3A%20Telerradiograf%C3%ADa%20frontal%20%28Radiograf%C3%ADas%20extraorales%29.%20%C2%BFQu%C3%A9%20horarios%20tienen%20disponibles%3F" target="_blank" rel="noopener">Telerradiografía frontal<svg class="fila-wa__icono" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3C9.4 3 4 8.3 4 14.9c0 2.3.7 4.5 1.9 6.3L4 29l8-2.1c1.2.6 2.6.9 4 .9 6.6 0 12-5.3 12-11.9S22.6 3 16 3zm0 21.8c-1.3 0-2.5-.3-3.6-.9l-.5-.3-4.7 1.2 1.3-4.6-.3-.5a9.7 9.7 0 0 1-1.5-5.2C6.7 9.7 10.9 5.6 16 5.6s9.3 4.1 9.3 9.3-4.2 9.9-9.3 9.9z"/></svg><span class="sr">, consultar por WhatsApp</span></a></th><td>S/ 40</td><td>S/ 25</td></tr>
+                  <tr class="fila-wa"><th scope="row"><a href="https://wa.me/51947707736?text=Hola%2C%20quiero%20consultar%20por%3A%20ATM%20%28boca%20cerrada%20/%20boca%20abierta%29%20%28Radiograf%C3%ADas%20extraorales%29.%20%C2%BFQu%C3%A9%20horarios%20tienen%20disponibles%3F" target="_blank" rel="noopener">ATM (boca cerrada / boca abierta)<svg class="fila-wa__icono" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3C9.4 3 4 8.3 4 14.9c0 2.3.7 4.5 1.9 6.3L4 29l8-2.1c1.2.6 2.6.9 4 .9 6.6 0 12-5.3 12-11.9S22.6 3 16 3zm0 21.8c-1.3 0-2.5-.3-3.6-.9l-.5-.3-4.7 1.2 1.3-4.6-.3-.5a9.7 9.7 0 0 1-1.5-5.2C6.7 9.7 10.9 5.6 16 5.6s9.3 4.1 9.3 9.3-4.2 9.9-9.3 9.9z"/></svg><span class="sr">, consultar por WhatsApp</span></a></th><td>S/ 40</td><td>S/ 25</td></tr>
+                  <tr class="fila-wa"><th scope="row"><a href="https://wa.me/51947707736?text=Hola%2C%20quiero%20consultar%20por%3A%20Waters%20%28senos%20maxilares%29%20%28Radiograf%C3%ADas%20extraorales%29.%20%C2%BFQu%C3%A9%20horarios%20tienen%20disponibles%3F" target="_blank" rel="noopener">Waters (senos maxilares)<svg class="fila-wa__icono" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3C9.4 3 4 8.3 4 14.9c0 2.3.7 4.5 1.9 6.3L4 29l8-2.1c1.2.6 2.6.9 4 .9 6.6 0 12-5.3 12-11.9S22.6 3 16 3zm0 21.8c-1.3 0-2.5-.3-3.6-.9l-.5-.3-4.7 1.2 1.3-4.6-.3-.5a9.7 9.7 0 0 1-1.5-5.2C6.7 9.7 10.9 5.6 16 5.6s9.3 4.1 9.3 9.3-4.2 9.9-9.3 9.9z"/></svg><span class="sr">, consultar por WhatsApp</span></a></th><td>S/ 40</td><td>S/ 25</td></tr>
+                  <tr class="fila-wa"><th scope="row"><a href="https://wa.me/51947707736?text=Hola%2C%20quiero%20consultar%20por%3A%20Posteroanterior%20%28Radiograf%C3%ADas%20extraorales%29.%20%C2%BFQu%C3%A9%20horarios%20tienen%20disponibles%3F" target="_blank" rel="noopener">Posteroanterior<svg class="fila-wa__icono" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3C9.4 3 4 8.3 4 14.9c0 2.3.7 4.5 1.9 6.3L4 29l8-2.1c1.2.6 2.6.9 4 .9 6.6 0 12-5.3 12-11.9S22.6 3 16 3zm0 21.8c-1.3 0-2.5-.3-3.6-.9l-.5-.3-4.7 1.2 1.3-4.6-.3-.5a9.7 9.7 0 0 1-1.5-5.2C6.7 9.7 10.9 5.6 16 5.6s9.3 4.1 9.3 9.3-4.2 9.9-9.3 9.9z"/></svg><span class="sr">, consultar por WhatsApp</span></a></th><td>S/ 40</td><td>S/ 25</td></tr>
+                  <tr class="fila-wa"><th scope="row"><a href="https://wa.me/51947707736?text=Hola%2C%20quiero%20consultar%20por%3A%20Carpal%20%28edad%20%C3%B3sea%29%20%28Radiograf%C3%ADas%20extraorales%29.%20%C2%BFQu%C3%A9%20horarios%20tienen%20disponibles%3F" target="_blank" rel="noopener">Carpal (edad ósea)<svg class="fila-wa__icono" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3C9.4 3 4 8.3 4 14.9c0 2.3.7 4.5 1.9 6.3L4 29l8-2.1c1.2.6 2.6.9 4 .9 6.6 0 12-5.3 12-11.9S22.6 3 16 3zm0 21.8c-1.3 0-2.5-.3-3.6-.9l-.5-.3-4.7 1.2 1.3-4.6-.3-.5a9.7 9.7 0 0 1-1.5-5.2C6.7 9.7 10.9 5.6 16 5.6s9.3 4.1 9.3 9.3-4.2 9.9-9.3 9.9z"/></svg><span class="sr">, consultar por WhatsApp</span></a></th><td>S/ 40</td><td>S/ 25</td></tr>
+                  <tr class="fila-wa"><th scope="row"><a href="https://wa.me/51947707736?text=Hola%2C%20quiero%20consultar%20por%3A%20Arco%20cigom%C3%A1tico%20%28Radiograf%C3%ADas%20extraorales%29.%20%C2%BFQu%C3%A9%20horarios%20tienen%20disponibles%3F" target="_blank" rel="noopener">Arco cigomático<svg class="fila-wa__icono" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3C9.4 3 4 8.3 4 14.9c0 2.3.7 4.5 1.9 6.3L4 29l8-2.1c1.2.6 2.6.9 4 .9 6.6 0 12-5.3 12-11.9S22.6 3 16 3zm0 21.8c-1.3 0-2.5-.3-3.6-.9l-.5-.3-4.7 1.2 1.3-4.6-.3-.5a9.7 9.7 0 0 1-1.5-5.2C6.7 9.7 10.9 5.6 16 5.6s9.3 4.1 9.3 9.3-4.2 9.9-9.3 9.9z"/></svg><span class="sr">, consultar por WhatsApp</span></a></th><td>S/ 40</td><td>S/ 25</td></tr>
                 </tbody>
               </table>
             </div>
@@ -251,11 +258,11 @@
               <table class="tabla-precios tabla-precios--simple">
                 <thead><tr><th scope="col">Estudio</th><th scope="col">Precio</th></tr></thead>
                 <tbody>
-                  <tr><th scope="row">Campo 5×5, 8×8 u 11×11 (entrega en USB)</th><td>S/ 160</td></tr>
-                  <tr><th scope="row">Con informe de 1 maxilar</th><td>S/ 180</td></tr>
-                  <tr><th scope="row">Con informe de 2 maxilares</th><td>S/ 200</td></tr>
-                  <tr><th scope="row">Con informe impreso de 2 maxilares</th><td>S/ 210</td></tr>
-                  <tr><th scope="row">Tomografía de ATM con informe (USB)</th><td>S/ 250</td></tr>
+                  <tr class="fila-wa"><th scope="row"><a href="https://wa.me/51947707736?text=Hola%2C%20quiero%20consultar%20por%3A%20Campo%205%C3%975%2C%208%C3%978%20u%2011%C3%9711%20%28entrega%20en%20USB%29%20%28Tomograf%C3%ADa%203D%20%28Cone%20Beam%29%29.%20%C2%BFQu%C3%A9%20horarios%20tienen%20disponibles%3F" target="_blank" rel="noopener">Campo 5×5, 8×8 u 11×11 (entrega en USB)<svg class="fila-wa__icono" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3C9.4 3 4 8.3 4 14.9c0 2.3.7 4.5 1.9 6.3L4 29l8-2.1c1.2.6 2.6.9 4 .9 6.6 0 12-5.3 12-11.9S22.6 3 16 3zm0 21.8c-1.3 0-2.5-.3-3.6-.9l-.5-.3-4.7 1.2 1.3-4.6-.3-.5a9.7 9.7 0 0 1-1.5-5.2C6.7 9.7 10.9 5.6 16 5.6s9.3 4.1 9.3 9.3-4.2 9.9-9.3 9.9z"/></svg><span class="sr">, consultar por WhatsApp</span></a></th><td>S/ 160</td></tr>
+                  <tr class="fila-wa"><th scope="row"><a href="https://wa.me/51947707736?text=Hola%2C%20quiero%20consultar%20por%3A%20Con%20informe%20de%201%20maxilar%20%28Tomograf%C3%ADa%203D%20%28Cone%20Beam%29%29.%20%C2%BFQu%C3%A9%20horarios%20tienen%20disponibles%3F" target="_blank" rel="noopener">Con informe de 1 maxilar<svg class="fila-wa__icono" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3C9.4 3 4 8.3 4 14.9c0 2.3.7 4.5 1.9 6.3L4 29l8-2.1c1.2.6 2.6.9 4 .9 6.6 0 12-5.3 12-11.9S22.6 3 16 3zm0 21.8c-1.3 0-2.5-.3-3.6-.9l-.5-.3-4.7 1.2 1.3-4.6-.3-.5a9.7 9.7 0 0 1-1.5-5.2C6.7 9.7 10.9 5.6 16 5.6s9.3 4.1 9.3 9.3-4.2 9.9-9.3 9.9z"/></svg><span class="sr">, consultar por WhatsApp</span></a></th><td>S/ 180</td></tr>
+                  <tr class="fila-wa"><th scope="row"><a href="https://wa.me/51947707736?text=Hola%2C%20quiero%20consultar%20por%3A%20Con%20informe%20de%202%20maxilares%20%28Tomograf%C3%ADa%203D%20%28Cone%20Beam%29%29.%20%C2%BFQu%C3%A9%20horarios%20tienen%20disponibles%3F" target="_blank" rel="noopener">Con informe de 2 maxilares<svg class="fila-wa__icono" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3C9.4 3 4 8.3 4 14.9c0 2.3.7 4.5 1.9 6.3L4 29l8-2.1c1.2.6 2.6.9 4 .9 6.6 0 12-5.3 12-11.9S22.6 3 16 3zm0 21.8c-1.3 0-2.5-.3-3.6-.9l-.5-.3-4.7 1.2 1.3-4.6-.3-.5a9.7 9.7 0 0 1-1.5-5.2C6.7 9.7 10.9 5.6 16 5.6s9.3 4.1 9.3 9.3-4.2 9.9-9.3 9.9z"/></svg><span class="sr">, consultar por WhatsApp</span></a></th><td>S/ 200</td></tr>
+                  <tr class="fila-wa"><th scope="row"><a href="https://wa.me/51947707736?text=Hola%2C%20quiero%20consultar%20por%3A%20Con%20informe%20impreso%20de%202%20maxilares%20%28Tomograf%C3%ADa%203D%20%28Cone%20Beam%29%29.%20%C2%BFQu%C3%A9%20horarios%20tienen%20disponibles%3F" target="_blank" rel="noopener">Con informe impreso de 2 maxilares<svg class="fila-wa__icono" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3C9.4 3 4 8.3 4 14.9c0 2.3.7 4.5 1.9 6.3L4 29l8-2.1c1.2.6 2.6.9 4 .9 6.6 0 12-5.3 12-11.9S22.6 3 16 3zm0 21.8c-1.3 0-2.5-.3-3.6-.9l-.5-.3-4.7 1.2 1.3-4.6-.3-.5a9.7 9.7 0 0 1-1.5-5.2C6.7 9.7 10.9 5.6 16 5.6s9.3 4.1 9.3 9.3-4.2 9.9-9.3 9.9z"/></svg><span class="sr">, consultar por WhatsApp</span></a></th><td>S/ 210</td></tr>
+                  <tr class="fila-wa"><th scope="row"><a href="https://wa.me/51947707736?text=Hola%2C%20quiero%20consultar%20por%3A%20Tomograf%C3%ADa%20de%20ATM%20con%20informe%20%28USB%29%20%28Tomograf%C3%ADa%203D%20%28Cone%20Beam%29%29.%20%C2%BFQu%C3%A9%20horarios%20tienen%20disponibles%3F" target="_blank" rel="noopener">Tomografía de ATM con informe (USB)<svg class="fila-wa__icono" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3C9.4 3 4 8.3 4 14.9c0 2.3.7 4.5 1.9 6.3L4 29l8-2.1c1.2.6 2.6.9 4 .9 6.6 0 12-5.3 12-11.9S22.6 3 16 3zm0 21.8c-1.3 0-2.5-.3-3.6-.9l-.5-.3-4.7 1.2 1.3-4.6-.3-.5a9.7 9.7 0 0 1-1.5-5.2C6.7 9.7 10.9 5.6 16 5.6s9.3 4.1 9.3 9.3-4.2 9.9-9.3 9.9z"/></svg><span class="sr">, consultar por WhatsApp</span></a></th><td>S/ 250</td></tr>
                 </tbody>
               </table>
             </div>
@@ -267,8 +274,8 @@
               <table class="tabla-precios tabla-precios--simple">
                 <thead><tr><th scope="col">Estudio</th><th scope="col">Precio</th></tr></thead>
                 <tbody>
-                  <tr><th scope="row">Técnica de Donovan (terceros molares)</th><td>S/ 30</td></tr>
-                  <tr><th scope="row">Técnica de Clark (dientes retenidos)</th><td>S/ 50</td></tr>
+                  <tr class="fila-wa"><th scope="row"><a href="https://wa.me/51947707736?text=Hola%2C%20quiero%20consultar%20por%3A%20T%C3%A9cnica%20de%20Donovan%20%28terceros%20molares%29%20%28T%C3%A9cnicas%20especiales%29.%20%C2%BFQu%C3%A9%20horarios%20tienen%20disponibles%3F" target="_blank" rel="noopener">Técnica de Donovan (terceros molares)<svg class="fila-wa__icono" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3C9.4 3 4 8.3 4 14.9c0 2.3.7 4.5 1.9 6.3L4 29l8-2.1c1.2.6 2.6.9 4 .9 6.6 0 12-5.3 12-11.9S22.6 3 16 3zm0 21.8c-1.3 0-2.5-.3-3.6-.9l-.5-.3-4.7 1.2 1.3-4.6-.3-.5a9.7 9.7 0 0 1-1.5-5.2C6.7 9.7 10.9 5.6 16 5.6s9.3 4.1 9.3 9.3-4.2 9.9-9.3 9.9z"/></svg><span class="sr">, consultar por WhatsApp</span></a></th><td>S/ 30</td></tr>
+                  <tr class="fila-wa"><th scope="row"><a href="https://wa.me/51947707736?text=Hola%2C%20quiero%20consultar%20por%3A%20T%C3%A9cnica%20de%20Clark%20%28dientes%20retenidos%29%20%28T%C3%A9cnicas%20especiales%29.%20%C2%BFQu%C3%A9%20horarios%20tienen%20disponibles%3F" target="_blank" rel="noopener">Técnica de Clark (dientes retenidos)<svg class="fila-wa__icono" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3C9.4 3 4 8.3 4 14.9c0 2.3.7 4.5 1.9 6.3L4 29l8-2.1c1.2.6 2.6.9 4 .9 6.6 0 12-5.3 12-11.9S22.6 3 16 3zm0 21.8c-1.3 0-2.5-.3-3.6-.9l-.5-.3-4.7 1.2 1.3-4.6-.3-.5a9.7 9.7 0 0 1-1.5-5.2C6.7 9.7 10.9 5.6 16 5.6s9.3 4.1 9.3 9.3-4.2 9.9-9.3 9.9z"/></svg><span class="sr">, consultar por WhatsApp</span></a></th><td>S/ 50</td></tr>
                 </tbody>
               </table>
             </div>
@@ -280,12 +287,12 @@
               <table class="tabla-precios tabla-precios--simple">
                 <thead><tr><th scope="col">Análisis</th><th scope="col">Precio</th></tr></thead>
                 <tbody>
-                  <tr><th scope="row">Steiner</th><td>S/ 15</td></tr>
-                  <tr><th scope="row">Ricketts</th><td>S/ 15</td></tr>
-                  <tr><th scope="row">McNamara</th><td>S/ 15</td></tr>
-                  <tr><th scope="row">Jarabak</th><td>S/ 15</td></tr>
-                  <tr><th scope="row">Fishman (carpal)</th><td>S/ 15</td></tr>
-                  <tr><th scope="row">Otros: Alexander, Björk, Cervera, Tweed, Tweed-Fish, PA, Ricketts frontal y Gianni-AP</th><td>S/ 15</td></tr>
+                  <tr class="fila-wa"><th scope="row"><a href="https://wa.me/51947707736?text=Hola%2C%20quiero%20consultar%20por%3A%20Steiner%20%28An%C3%A1lisis%20cefalom%C3%A9tricos%20computarizados%29.%20%C2%BFQu%C3%A9%20horarios%20tienen%20disponibles%3F" target="_blank" rel="noopener">Steiner<svg class="fila-wa__icono" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3C9.4 3 4 8.3 4 14.9c0 2.3.7 4.5 1.9 6.3L4 29l8-2.1c1.2.6 2.6.9 4 .9 6.6 0 12-5.3 12-11.9S22.6 3 16 3zm0 21.8c-1.3 0-2.5-.3-3.6-.9l-.5-.3-4.7 1.2 1.3-4.6-.3-.5a9.7 9.7 0 0 1-1.5-5.2C6.7 9.7 10.9 5.6 16 5.6s9.3 4.1 9.3 9.3-4.2 9.9-9.3 9.9z"/></svg><span class="sr">, consultar por WhatsApp</span></a></th><td>S/ 15</td></tr>
+                  <tr class="fila-wa"><th scope="row"><a href="https://wa.me/51947707736?text=Hola%2C%20quiero%20consultar%20por%3A%20Ricketts%20%28An%C3%A1lisis%20cefalom%C3%A9tricos%20computarizados%29.%20%C2%BFQu%C3%A9%20horarios%20tienen%20disponibles%3F" target="_blank" rel="noopener">Ricketts<svg class="fila-wa__icono" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3C9.4 3 4 8.3 4 14.9c0 2.3.7 4.5 1.9 6.3L4 29l8-2.1c1.2.6 2.6.9 4 .9 6.6 0 12-5.3 12-11.9S22.6 3 16 3zm0 21.8c-1.3 0-2.5-.3-3.6-.9l-.5-.3-4.7 1.2 1.3-4.6-.3-.5a9.7 9.7 0 0 1-1.5-5.2C6.7 9.7 10.9 5.6 16 5.6s9.3 4.1 9.3 9.3-4.2 9.9-9.3 9.9z"/></svg><span class="sr">, consultar por WhatsApp</span></a></th><td>S/ 15</td></tr>
+                  <tr class="fila-wa"><th scope="row"><a href="https://wa.me/51947707736?text=Hola%2C%20quiero%20consultar%20por%3A%20McNamara%20%28An%C3%A1lisis%20cefalom%C3%A9tricos%20computarizados%29.%20%C2%BFQu%C3%A9%20horarios%20tienen%20disponibles%3F" target="_blank" rel="noopener">McNamara<svg class="fila-wa__icono" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3C9.4 3 4 8.3 4 14.9c0 2.3.7 4.5 1.9 6.3L4 29l8-2.1c1.2.6 2.6.9 4 .9 6.6 0 12-5.3 12-11.9S22.6 3 16 3zm0 21.8c-1.3 0-2.5-.3-3.6-.9l-.5-.3-4.7 1.2 1.3-4.6-.3-.5a9.7 9.7 0 0 1-1.5-5.2C6.7 9.7 10.9 5.6 16 5.6s9.3 4.1 9.3 9.3-4.2 9.9-9.3 9.9z"/></svg><span class="sr">, consultar por WhatsApp</span></a></th><td>S/ 15</td></tr>
+                  <tr class="fila-wa"><th scope="row"><a href="https://wa.me/51947707736?text=Hola%2C%20quiero%20consultar%20por%3A%20Jarabak%20%28An%C3%A1lisis%20cefalom%C3%A9tricos%20computarizados%29.%20%C2%BFQu%C3%A9%20horarios%20tienen%20disponibles%3F" target="_blank" rel="noopener">Jarabak<svg class="fila-wa__icono" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3C9.4 3 4 8.3 4 14.9c0 2.3.7 4.5 1.9 6.3L4 29l8-2.1c1.2.6 2.6.9 4 .9 6.6 0 12-5.3 12-11.9S22.6 3 16 3zm0 21.8c-1.3 0-2.5-.3-3.6-.9l-.5-.3-4.7 1.2 1.3-4.6-.3-.5a9.7 9.7 0 0 1-1.5-5.2C6.7 9.7 10.9 5.6 16 5.6s9.3 4.1 9.3 9.3-4.2 9.9-9.3 9.9z"/></svg><span class="sr">, consultar por WhatsApp</span></a></th><td>S/ 15</td></tr>
+                  <tr class="fila-wa"><th scope="row"><a href="https://wa.me/51947707736?text=Hola%2C%20quiero%20consultar%20por%3A%20Fishman%20%28carpal%29%20%28An%C3%A1lisis%20cefalom%C3%A9tricos%20computarizados%29.%20%C2%BFQu%C3%A9%20horarios%20tienen%20disponibles%3F" target="_blank" rel="noopener">Fishman (carpal)<svg class="fila-wa__icono" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3C9.4 3 4 8.3 4 14.9c0 2.3.7 4.5 1.9 6.3L4 29l8-2.1c1.2.6 2.6.9 4 .9 6.6 0 12-5.3 12-11.9S22.6 3 16 3zm0 21.8c-1.3 0-2.5-.3-3.6-.9l-.5-.3-4.7 1.2 1.3-4.6-.3-.5a9.7 9.7 0 0 1-1.5-5.2C6.7 9.7 10.9 5.6 16 5.6s9.3 4.1 9.3 9.3-4.2 9.9-9.3 9.9z"/></svg><span class="sr">, consultar por WhatsApp</span></a></th><td>S/ 15</td></tr>
+                  <tr class="fila-wa"><th scope="row"><a href="https://wa.me/51947707736?text=Hola%2C%20quiero%20consultar%20por%3A%20Otros%3A%20Alexander%2C%20Bj%C3%B6rk%2C%20Cervera%2C%20Tweed%2C%20Tweed-Fish%2C%20PA%2C%20Ricketts%20frontal%20y%20Gianni-AP%20%28An%C3%A1lisis%20cefalom%C3%A9tricos%20computarizados%29.%20%C2%BFQu%C3%A9%20horarios%20tienen%20disponibles%3F" target="_blank" rel="noopener">Otros: Alexander, Björk, Cervera, Tweed, Tweed-Fish, PA, Ricketts frontal y Gianni-AP<svg class="fila-wa__icono" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3C9.4 3 4 8.3 4 14.9c0 2.3.7 4.5 1.9 6.3L4 29l8-2.1c1.2.6 2.6.9 4 .9 6.6 0 12-5.3 12-11.9S22.6 3 16 3zm0 21.8c-1.3 0-2.5-.3-3.6-.9l-.5-.3-4.7 1.2 1.3-4.6-.3-.5a9.7 9.7 0 0 1-1.5-5.2C6.7 9.7 10.9 5.6 16 5.6s9.3 4.1 9.3 9.3-4.2 9.9-9.3 9.9z"/></svg><span class="sr">, consultar por WhatsApp</span></a></th><td>S/ 15</td></tr>
                 </tbody>
               </table>
             </div>
@@ -346,48 +353,6 @@
       </div>
     </section>
 
-    <!-- ============ 6B. RED DE PROFESIONALES (externos) ============ -->
-    <!-- Solo publicar a cada profesional con su PERMISO ESCRITO (nombre, foto, consultorio y contacto).
-         Debe quedar claro que son independientes y no pertenecen a Dimsac Dent. Revisar las reglas de publicidad en salud (COP / Indecopi) antes de publicar. -->
-    <section id="red" class="seccion">
-      <div class="contenedor">
-        <h2 class="revelar">Red de profesionales de confianza</h2>
-        <p class="seccion__intro">En Dimsac Dent hacemos tus radiografías y tomografías. Si además necesitas un tratamiento dental, te orientamos hacia odontólogos independientes de confianza.</p>
-
-        <div class="dos-tipos">
-          <div class="tipo tipo--propio revelar">
-            <h3>Atención en Dimsac Dent</h3>
-            <p>Radiografías y tomografías en nuestros locales de Los Coritos y La Pacheta.</p>
-          </div>
-          <div class="tipo tipo--externo revelar">
-            <h3>Profesionales de la red externa</h3>
-            <p>Atienden en sus propios consultorios. No forman parte de Dimsac Dent: el precio, la atención y la cita se coordinan directamente con cada uno.</p>
-          </div>
-        </div>
-
-        <div class="equipo equipo--red">
-          <article class="persona persona--externa revelar">
-            <span class="etiqueta">Profesional independiente</span>
-            <div class="persona__foto persona__foto--vacia" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><circle cx="12" cy="8.500" r="4"/><path d="M4 21c1-4.500 4-6.500 8-6.500s7 2 8 6.500"/></svg>
-            </div>
-            <p class="todo">TODO: nombre, especialidad, consultorio (dirección) y contacto autorizado</p>
-          </article>
-          <article class="persona persona--externa revelar">
-            <span class="etiqueta">Profesional independiente</span>
-            <div class="persona__foto persona__foto--vacia" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><circle cx="12" cy="8.500" r="4"/><path d="M4 21c1-4.500 4-6.500 8-6.500s7 2 8 6.500"/></svg>
-            </div>
-            <p class="todo">TODO: nombre, especialidad, consultorio (dirección) y contacto autorizado</p>
-          </article>
-        </div>
-
-        <div class="botones">
-          <a class="boton boton--negro" href="https://wa.me/51947707736?text=Hola%2C%20necesito%20una%20especialidad%20dental%20y%20quiero%20que%20me%20orienten" target="_blank" rel="noopener">Pregúntanos por WhatsApp</a>
-        </div>
-      </div>
-    </section>
-
     <!-- ============ 7. NUESTROS LOCALES ============ -->
     <section id="locales" class="seccion">
       <div class="contenedor">
@@ -398,9 +363,7 @@
           <article class="tarjeta revelar">
             <h3>Local Los Coritos</h3>
             <p><strong>Dirección:</strong> Coop. Daniel A. Carrión G-31B, Av. Paseo de La Cultura, José Luis Bustamante y Rivero, Arequipa 04009</p>
-            <p><strong>Horario:</strong><br>Lunes a viernes: 9:00 a. m. a 1:00 p. m. y 2:30 p. m. a 7:00 p. m.<br>Sábado: 9:00 a. m. a 5:00 p. m.<br>Domingo: cerrado</p>
-            <!-- TODO: confirmar si este local tiene el mismo horario -->
-            <p class="todo">TODO: confirmar horario de este local</p>
+            <p><strong>Horario (todos los días):</strong><br>9:00 a. m. a 1:00 p. m.<br>2:30 p. m. a 7:00 p. m.</p>
             <a class="boton boton--oro" href="https://maps.app.goo.gl/W5UJmP2ibYKKsiDV7" target="_blank" rel="noopener">Ver en Google Maps</a>
           </article>
 
@@ -408,9 +371,7 @@
             <h3>Local La Pacheta</h3>
             <p>Por el cementerio de La Pacheta.</p>
             <p><strong>Dirección:</strong> <span class="todo">TODO: calle y número de La Pacheta</span></p>
-            <p><strong>Horario:</strong><br>Lunes a viernes: 9:00 a. m. a 1:00 p. m. y 2:30 p. m. a 7:00 p. m.<br>Sábado: 9:00 a. m. a 5:00 p. m.<br>Domingo: cerrado</p>
-            <!-- TODO: confirmar si este local tiene el mismo horario -->
-            <p class="todo">TODO: confirmar horario de este local</p>
+            <p><strong>Horario (todos los días):</strong><br>9:00 a. m. a 1:00 p. m.<br>2:30 p. m. a 7:00 p. m.</p>
             <!-- Ubicación por coordenadas (16°26'00.5"S 71°31'55.3"W). Cambiar por el enlace de la ficha de Google Maps cuando exista. -->
             <a class="boton boton--oro" href="https://www.google.com/maps/search/?api=1&amp;query=-16.433472%2C-71.532028" target="_blank" rel="noopener">Ver en Google Maps</a>
           </article>
@@ -444,7 +405,7 @@
       </div>
       <div>
         <p><strong>Horario</strong></p>
-        <p>Lun a vie: 9:00 a. m. a 1:00 p. m. y 2:30 a 7:00 p. m.<br>Sábado: 9:00 a. m. a 5:00 p. m.<br>Domingo: cerrado</p>
+        <p>Todos los días, en ambos locales:<br>9:00 a. m. a 1:00 p. m. y 2:30 a 7:00 p. m.</p>
       </div>
     </div>
     <p class="pie__copia">&copy; <span id="anio">2026</span> Dimsac Dent. Arequipa, Perú.</p>
@@ -466,6 +427,6 @@
     <span>WhatsApp</span>
   </a>
 
-  <script src="js/main.js?v=12"></script>
+  <script src="js/main.js?v=13"></script>
 </body>
 </html>
