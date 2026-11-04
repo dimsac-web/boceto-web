@@ -3,6 +3,8 @@
 Formato: fecha, decisión, motivo. Lo más reciente arriba.
 
 ## 2026-11-04
+- **WhatsApp por local**: un botón "Pedir cita por WhatsApp" en cada tarjeta de Locales, mismo número (947 707 736) y mensaje distinto por sede. Aprobado tras revisión de ChatGPT.
+- **Automatización `@claude` en GitHub**: se deja para después; primero probar en un repositorio aparte. Mientras tanto, ciclo manual con pull requests.
 - **Coordinación entre ChatGPT y Claude Code por GitHub**: archivos de reglas, registro y pull requests. Sin API adicional.
 - **Recorrido de fotos: 6 escenas** (antes 9): fachada Los Coritos, recepción, sala de radiografías, equipo de radiografía y tomografía, pantalla táctil, rayos X intraoral. Motivo: menos desplazamiento en el celular. Las fotos serán retomadas por la dueña.
 - **Botón fijo "Cómo llegar"** dentro del recorrido (lleva a Locales); se quitó el atajo de direcciones del inicio.

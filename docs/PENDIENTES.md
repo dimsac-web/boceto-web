@@ -3,7 +3,7 @@
 ## Prioridad 1: locales
 - [ ] Recibir fotos de La Apacheta (entrada e interior) y de la fachada de Los Coritos.
 - [ ] Poner 2 fotos deslizables en la tarjeta de La Apacheta y 1 de fachada en la de Los Coritos.
-- [ ] Botón de WhatsApp por local, con mensaje propio de cada sede.
+- [x] Botón de WhatsApp por local, con mensaje propio de cada sede (hecho 2026-11-04, revisado por ChatGPT).
 - [ ] Retomar las fotos del recorrido (sillón de rayos X en horizontal; el resto si están oscuras o desordenadas).
 
 ## Prioridad 2
