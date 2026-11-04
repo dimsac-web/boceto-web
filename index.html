@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=15">
+  <link rel="stylesheet" href="css/styles.css?v=16">
 
   <!-- Datos estructurados para Google (negocio local) -->
   <script type="application/ld+json">
@@ -37,6 +37,7 @@
     "areaServed": "Arequipa, Perú",
     "priceRange": "S/ 15 – S/ 250",
     "currenciesAccepted": "PEN",
+    "paymentAccepted": "Efectivo, Yape, Plin, Transferencia bancaria",
     "address": { "@type": "PostalAddress", "addressLocality": "Arequipa", "addressCountry": "PE" },
     "openingHoursSpecification": [
       { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "09:00", "closes": "13:00" },
@@ -294,6 +295,17 @@
         </div>
 
         <p class="servicios__nota">Los precios pueden cambiar. Confírmalos al pedir tu cita.</p>
+
+        <div class="pagos revelar">
+          <h3>Formas de pago</h3>
+          <ul class="pagos__lista">
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg><span>Yape</span></li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg><span>Plin</span></li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9.5L12 4l9 5.5M5 10v7M9.5 10v7M14.5 10v7M19 10v7M3 20h18"/></svg><span>Transferencia bancaria</span></li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="6" width="19" height="12" rx="2"/><circle cx="12" cy="12" r="2.6"/><path d="M6 9.5v5M18 9.5v5"/></svg><span>Efectivo</span></li>
+          </ul>
+          <!-- TODO (opcional): número de Yape/Plin y cuenta bancaria, si la dueña quiere publicarlos -->
+        </div>
         <div class="botones">
           <a class="boton boton--oro" href="https://wa.me/51947707736?text=Hola%2C%20quiero%20consultar%20un%20precio" target="_blank" rel="noopener">Consultar un precio por WhatsApp</a>
         </div>
@@ -396,6 +408,7 @@
           <span class="marca__texto">DIMSAC <b>DENT</b></span>
         </p>
         <p>Dimsac Dent, parte de Coergo</p>
+        <p><strong>Formas de pago:</strong> Yape, Plin, transferencia bancaria y efectivo.</p>
       </div>
       <div>
         <p><strong>Horario</strong></p>
@@ -421,6 +434,6 @@
     <span>WhatsApp</span>
   </a>
 
-  <script src="js/main.js?v=15"></script>
+  <script src="js/main.js?v=16"></script>
 </body>
 </html>
