@@ -140,3 +140,33 @@ document.addEventListener('pointerdown', (e) => {
   ['mouseenter', 'focusin'].forEach(ev => burbuja.addEventListener(ev, () => clearTimeout(tOcultar)));
   ['mouseleave', 'focusout'].forEach(ev => burbuja.addEventListener(ev, () => { clearTimeout(tOcultar); tOcultar = setTimeout(ocultar, 3000); }));
 })();
+
+// Modo claro / oscuro: sigue al celular o computadora; el botón lo cambia a mano y se recuerda.
+(function () {
+  const btn = document.getElementById('temaBoton');
+  if (!btn) return;
+  const raiz = document.documentElement;
+  const oscuroSistema = window.matchMedia('(prefers-color-scheme: dark)');
+  const actual = () => raiz.getAttribute('data-theme') || (oscuroSistema.matches ? 'dark' : 'light');
+  const etiquetar = () => {
+    const esOscuro = actual() === 'dark';
+    btn.setAttribute('aria-label', esOscuro ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
+    btn.title = esOscuro ? 'Modo claro' : 'Modo oscuro';
+  };
+  btn.addEventListener('click', () => {
+    const nuevo = actual() === 'dark' ? 'light' : 'dark';
+    raiz.setAttribute('data-theme', nuevo);
+    try { localStorage.setItem('tema', nuevo); } catch (e) {}
+    etiquetar();
+  });
+  if (oscuroSistema.addEventListener) oscuroSistema.addEventListener('change', etiquetar);
+  etiquetar();
+})();
+
+// Tocar cualquier parte de una fila de precios abre WhatsApp con el mensaje de ese estudio.
+document.addEventListener('click', (e) => {
+  const fila = e.target.closest('.fila-wa');
+  if (!fila || e.target.closest('a')) return;
+  const enlace = fila.querySelector('a');
+  if (enlace) enlace.click();
+});
