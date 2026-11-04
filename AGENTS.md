@@ -26,4 +26,4 @@ Sitio estático (HTML, CSS y JS sin frameworks) del centro de radiología odonto
 - Los dos modelos **no conversan entre sí**: se comunican solo mediante este repositorio.
 
 ## Privacidad
-El repositorio es **público**. No guardar contraseñas, claves, datos personales ni fotos de pacientes. Las fotos del equipo solo con permiso de cada persona.
+El repositorio es **público**. No guardar contraseñas, credenciales, información sensible ni datos identificables de pacientes. Los datos profesionales y las fotografías del equipo solo podrán publicarse con autorización de cada persona.
