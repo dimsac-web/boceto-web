@@ -507,3 +507,6 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline-color: va
 .visor .botones { margin-top: 14px; }
 @media (prefers-reduced-motion: reduce) { .ver-ejemplo { transition: none; } }
 .visor__imagen { min-height: 220px; }
+/* Equipo: tarjeta con persona real */
+.persona__foto img { object-position: center 20%; }
+.persona h3 { font-size: 1.3rem; }
