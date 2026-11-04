@@ -1,3 +1,14 @@
+// La página siempre se abre desde arriba (aunque el enlace traiga #precios u otra sección,
+// o el navegador recuerde dónde se quedó la última vez). Los enlaces del menú siguen funcionando normal.
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+(function () {
+  const subir = () => window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+  subir();
+  window.addEventListener('load', subir, { once: true });
+  window.addEventListener('pageshow', (e) => { if (e.persisted) subir(); });
+})();
+
 // Menú móvil
 const boton = document.getElementById('menuBoton');
 const menu = document.getElementById('menu');
