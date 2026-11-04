@@ -148,3 +148,60 @@ document.addEventListener('click', (e) => {
   const enlace = fila.querySelector('a');
   if (enlace) enlace.click();
 });
+
+// Radiografías de ejemplo: imágenes de libre uso de Wikimedia Commons (no son pacientes de Dimsac Dent).
+(function () {
+  const visor = document.getElementById('visor');
+  if (!visor || typeof visor.showModal !== 'function') {
+    document.querySelectorAll('.ver-ejemplo').forEach(b => b.hidden = true);
+    return;
+  }
+  const fp = (archivo) => 'https://commons.wikimedia.org/wiki/Special:FilePath/' + encodeURIComponent(archivo) + '?width=1000';
+  const pag = (archivo) => 'https://commons.wikimedia.org/wiki/File:' + encodeURIComponent(archivo.replace(/ /g, '_'));
+  const LIC = {
+    'CC BY 3.0': 'https://creativecommons.org/licenses/by/3.0/deed.es',
+    'CC BY 4.0': 'https://creativecommons.org/licenses/by/4.0/deed.es',
+    'CC BY-SA 4.0': 'https://creativecommons.org/licenses/by-sa/4.0/deed.es',
+    'CC0': 'https://creativecommons.org/publicdomain/zero/1.0/deed.es'
+  };
+  const EJ = {
+    periapical: { t: 'Radiografía periapical', f: 'Periapical radiolucency.jpg', a: 'Shaimaa Abdellatif', l: 'CC BY-SA 4.0',
+      d: 'Muestra 2 o 3 dientes completos, desde la corona hasta la raíz. Sirve para ver caries, infecciones en la raíz y tratamientos de conducto.' },
+    oclusal: { t: 'Radiografía oclusal', f: 'Occlusal view symphsis fracture.jpg', a: 'Coronation Dental Specialty Group', l: 'CC BY 3.0',
+      d: 'Se toma con la placa entre los dientes y muestra el piso o el techo de la boca. Sirve para ver dientes retenidos, fracturas o cálculos.' },
+    panoramica: { t: 'Radiografía panorámica', f: 'Basic panoramic radiograph.jpg', a: 'Coronation Dental Specialty Group', l: 'CC BY 3.0',
+      d: 'Muestra todos los dientes y los dos maxilares en una sola imagen. Sirve para ver muelas del juicio, dientes que no salen y el estado general de la boca.' },
+    lateral: { t: 'Telerradiografía lateral (cefalometría)', f: 'Cephalometric radiograph.JPG', a: 'ANUG', l: 'CC BY-SA 4.0',
+      d: 'Muestra el cráneo y la cara de perfil. La piden los ortodoncistas para planificar brackets; sobre ella se hacen los análisis cefalométricos (Steiner, Ricketts y otros).' },
+    waters: { t: 'Radiografía de Waters (senos maxilares)', f: 'Paranasal sinuses radiograph occipitomental projection.jpg', a: 'Ptrump16', l: 'CC BY-SA 4.0',
+      d: 'Vista de frente, con la cabeza inclinada. Sirve para ver los senos maxilares, por ejemplo cuando hay sinusitis.' },
+    carpal: { t: 'Radiografía carpal (edad ósea)', f: 'X-ray of a hand before automatic bone age calculation.jpg', a: 'Mikael Häggström', l: 'CC0',
+      d: 'Radiografía de la mano y la muñeca. Sirve para calcular la edad ósea y saber cuánto crecimiento le queda a un niño o adolescente.' },
+    tomografia: { t: 'Tomografía 3D (Cone Beam)', f: 'Jaw lesions - Idiopathic osteosclerosis - Cone beam CT.jpg', a: 'B. S. F. Silva, M. R. Bueno, F. P. Yamamoto-Silva, R. S. S. Gomez, O. A. Peters y C. Estrela', l: 'CC BY 4.0',
+      d: 'Imagen en 3D, en cortes, de los dientes y el hueso. Sirve para planificar implantes, ubicar dientes retenidos y ver lesiones con mucho detalle.' }
+  };
+  const $ = (id) => document.getElementById(id);
+  let origen = null;
+  function abrir(k, boton) {
+    const e = EJ[k]; if (!e) return;
+    origen = boton;
+    $('visorTitulo').textContent = e.t;
+    $('visorImg').src = fp(e.f);
+    $('visorImg').alt = 'Ejemplo de ' + e.t.toLowerCase();
+    $('visorTexto').textContent = e.d;
+    $('visorCredito').innerHTML = 'Imagen de ejemplo, no corresponde a un paciente de Dimsac Dent. Autor: ' + e.a +
+      ' · Licencia <a href="' + LIC[e.l] + '" target="_blank" rel="noopener">' + e.l + '</a> · vía <a href="' + pag(e.f) + '" target="_blank" rel="noopener">Wikimedia Commons</a>.';
+    $('visorWa').href = 'https://wa.me/51947707736?text=' + encodeURIComponent('Hola, quiero consultar por: ' + e.t + '. ¿Qué horarios tienen disponibles?');
+    visor.showModal();
+  }
+  document.addEventListener('click', (ev) => {
+    const b = ev.target.closest('.ver-ejemplo');
+    if (!b) return;
+    ev.preventDefault(); ev.stopPropagation();
+    abrir(b.dataset.ejemplo, b);
+  }, true);
+  $('visorCerrar').addEventListener('click', () => visor.close());
+  document.addEventListener('keydown', (ev) => { if (ev.key === 'Escape' && visor.open) visor.close(); });
+  visor.addEventListener('click', (ev) => { if (ev.target === visor) visor.close(); });
+  visor.addEventListener('close', () => { $('visorImg').src = ''; if (origen) origen.focus(); });
+})();
