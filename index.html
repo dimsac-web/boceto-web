@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=23">
+  <link rel="stylesheet" href="css/styles.css?v=24">
 
   <!-- Datos estructurados para Google (negocio local). Pendiente: agregar "url", "logo" y "geo" cuando exista el dominio final. -->
   <script type="application/ld+json">
@@ -105,7 +105,6 @@
             <a class="boton boton--borde boton--grande" href="tel:+51947707736">Llamar ahora: 947 707 736</a>
             <a class="boton boton--borde boton--grande" href="#precios">Ver precios</a>
           </div>
-          <p class="hero__locales"><a href="#locales">📍 2 locales en Arequipa: Los Coritos y La Apacheta, <strong>cómo llegar</strong></a></p>
         </div>
         <div class="hero__foto">
           <img src="img/puerta.jpg" width="1000" height="1333" alt="Entrada de vidrio con diseño de mármol, rodeada de paneles de madera con luz cálida" fetchpriority="high">
@@ -117,48 +116,35 @@
     <!-- Con JavaScript: las fotos se funden y se acercan lentamente mientras bajas la página (efecto "recorrido").
          Sin JavaScript o con "reducir movimiento" activado: se ven como fotos normales una debajo de otra. -->
     <!-- TODO: confirmar que las fotos del interior son del local Los Coritos (la fachada sí lo es). Los números viejos del letrero están difuminados a propósito. -->
-    <section id="recorrido" class="recorrido" aria-label="Recorrido por nuestro local" style="--n:9">
+    <section id="recorrido" class="recorrido" aria-label="Recorrido por nuestro local" style="--n:6">
       <div class="recorrido__escenario">
         <figure class="escena">
           <img src="img/fachada-lateral.jpg" width="1200" height="900" alt="Fachada del local con su letrero de Tomografía Dental y Radiografías Dentales">
-          <figcaption><span class="escena__num">01</span><strong>Local Los Coritos</strong><span>Av. Paseo de la Cultura, José Luis Bustamante y Rivero.</span></figcaption>
-        </figure>
-        <figure class="escena">
-          <img src="img/fachada.jpg" width="1200" height="900" alt="Frente del local Dimsac Dent con sus dos entradas y letreros" loading="lazy">
-          <figcaption><span class="escena__num">02</span><strong>Te esperamos aquí</strong><span>Tomografía dental y radiología oral.</span></figcaption>
+          <figcaption><span class="escena__num">01</span><strong>Local Los Coritos</strong><span>Av. Paseo de la Cultura, José Luis Bustamante y Rivero.</span><a class="escena__lugar" href="#locales">📍 Cómo llegar</a></figcaption>
         </figure>
         <figure class="escena">
           <img src="img/recepcion.jpg" width="1400" height="1050" alt="Recepción con paneles de madera, un sillón, el mostrador de mármol y un diente sonriente en la pared" loading="lazy">
-          <figcaption><span class="escena__num">03</span><strong>Te recibimos en un espacio renovado</strong><span>Cómodo, limpio y pensado para ti.</span></figcaption>
-        </figure>
-        <figure class="escena escena--vertical">
-          <img class="escena__fondo" src="img/puerta.jpg" alt="" aria-hidden="true" loading="lazy">
-          <img src="img/puerta.jpg" width="800" height="1066" alt="Puerta de vidrio con diseño de mármol y vetas doradas, entre paneles de madera con luz cálida" loading="lazy">
-          <figcaption><span class="escena__num">04</span><strong>Un ambiente cálido</strong><span>Madera, luz suave y detalles en dorado.</span></figcaption>
+          <figcaption><span class="escena__num">02</span><strong>Te recibimos en un espacio renovado</strong><span>Cómodo, limpio y pensado para ti.</span><a class="escena__lugar" href="#locales">📍 Los Coritos · cómo llegar</a></figcaption>
         </figure>
         <figure class="escena">
           <img src="img/sala-evaluacion.jpg" width="1400" height="1050" alt="Sala de radiografías con sillón y equipo de rayos X dental" loading="lazy">
-          <figcaption><span class="escena__num">05</span><strong>Sala de radiografías</strong><span>Equipos propios y atención personalizada.</span></figcaption>
+          <figcaption><span class="escena__num">03</span><strong>Sala de radiografías</strong><span>Equipos propios y atención personalizada.</span><a class="escena__lugar" href="#locales">📍 Los Coritos · cómo llegar</a></figcaption>
         </figure>
         <figure class="escena">
           <img src="img/tomografo.jpg" width="1400" height="1050" alt="Equipo digital de radiografía panorámica y tomografía dental 3D" loading="lazy">
-          <figcaption><span class="escena__num">06</span><strong>Radiografía y tomografía digital</strong><span>Imágenes claras para tu diagnóstico.</span></figcaption>
+          <figcaption><span class="escena__num">04</span><strong>Radiografía y tomografía digital</strong><span>Imágenes claras para tu diagnóstico.</span><a class="escena__lugar" href="#locales">📍 Los Coritos · cómo llegar</a></figcaption>
         </figure>
         <figure class="escena escena--vertical">
           <img class="escena__fondo" src="img/pantalla.jpg" alt="" aria-hidden="true" loading="lazy">
           <img src="img/pantalla.jpg" width="800" height="1067" alt="Equipo de rayos X con su pantalla táctil que muestra las opciones PAN, CEPH y 3D" loading="lazy">
-          <figcaption><span class="escena__num">07</span><strong>Un solo equipo, tres tipos de imagen</strong><span>Panorámica, cefalométrica y 3D.</span></figcaption>
-        </figure>
-        <figure class="escena">
-          <img src="img/ceph.jpg" width="1400" height="1050" alt="Brazo del equipo para radiografía cefalométrica" loading="lazy">
-          <figcaption><span class="escena__num">08</span><strong>Cefalometría digital</strong><span>Con análisis computarizado de la imagen.</span></figcaption>
+          <figcaption><span class="escena__num">05</span><strong>Un solo equipo, tres tipos de imagen</strong><span>Panorámica, cefalométrica y 3D.</span><a class="escena__lugar" href="#locales">📍 Los Coritos · cómo llegar</a></figcaption>
         </figure>
         <figure class="escena escena--vertical">
           <img class="escena__fondo" src="img/silla.jpg" alt="" aria-hidden="true" loading="lazy">
           <img src="img/silla.jpg" width="800" height="1067" alt="Sillón con el logo de Dimsac Dent y equipo de rayos X dental en la pared" loading="lazy">
-          <figcaption><span class="escena__num">09</span><strong>Rayos X intraoral</strong><span>Cómodo y rápido, en unos minutos.</span></figcaption>
+          <figcaption><span class="escena__num">06</span><strong>Rayos X intraoral</strong><span>Cómodo y rápido, en unos minutos.</span><a class="escena__lugar" href="#locales">📍 Los Coritos · cómo llegar</a></figcaption>
         </figure>
-        <div class="recorrido__puntos" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="recorrido__puntos" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
         <p class="recorrido__guia" aria-hidden="true">Sigue bajando ↓</p>
       </div>
     </section>
@@ -431,6 +417,6 @@
     <span>WhatsApp</span>
   </a>
 
-  <script src="js/main.js?v=23"></script>
+  <script src="js/main.js?v=24"></script>
 </body>
 </html>
