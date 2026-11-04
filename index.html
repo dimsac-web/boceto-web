@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=19">
+  <link rel="stylesheet" href="css/styles.css?v=20">
 
   <!-- Datos estructurados para Google (negocio local) -->
   <script type="application/ld+json">
@@ -64,11 +64,11 @@
       <button class="menu-boton" id="menuBoton" aria-expanded="false" aria-controls="menu">Menú</button>
 
       <nav id="menu" class="menu" aria-label="Menú principal">
-        <a href="#servicios">Servicios</a>
+      <nav id="menu" class="menu" aria-label="Menú principal">
         <a href="#precios">Precios</a>
         <a href="#cita">Tu cita</a>
-        <a href="#equipo">Equipo</a>
         <a href="#locales">Locales</a>
+        <a href="#equipo">Equipo</a>
         <a href="#contacto">Contacto</a>
       </nav>
 
@@ -88,7 +88,9 @@
           <div class="botones">
             <a class="boton boton--oro boton--grande" href="https://wa.me/51947707736" target="_blank" rel="noopener">Escríbenos por WhatsApp</a>
             <a class="boton boton--borde boton--grande" href="tel:+51947707736">Llamar ahora: 947 707 736</a>
+            <a class="boton boton--borde boton--grande" href="#precios">Ver precios</a>
           </div>
+          <p class="hero__locales"><a href="#locales">📍 2 locales en Arequipa: Los Coritos y La Pacheta, <strong>cómo llegar</strong></a></p>
         </div>
         <div class="hero__foto">
           <img src="img/puerta.jpg" width="1000" height="1333" alt="Entrada de vidrio con diseño de mármol, rodeada de paneles de madera con luz cálida" fetchpriority="high">
@@ -146,68 +148,6 @@
       </div>
     </section>
 
-    <!-- ============ 4. SERVICIOS ============ -->
-    <section id="servicios" class="seccion">
-      <div class="contenedor">
-        <h2 class="revelar">Nuestros servicios</h2>
-        <p class="seccion__intro">Precios en soles (S/). Abajo tienes la <a href="#precios">lista completa de precios</a>.</p>
-
-        <div class="servicios">
-          <article class="servicio revelar">
-            <svg class="servicio__icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 3.500c-2.200 0-3.800 1.800-3.800 4.300 0 2.200.9 3.300 1.500 5.200.6 1.900.6 6.500 2.300 6.500 1.600 0 1.400-4.200 3-4.200s1.400 4.200 3 4.200c1.700 0 1.700-4.600 2.300-6.500.6-1.900 1.500-3 1.500-5.200 0-2.500-1.600-4.300-3.800-4.300-1.700 0-2.300.8-3 .8s-1.300-.8-3-.8z"/></svg>
-            <h3>Radiografías intraorales</h3>
-            <p>Periapical, bitewing, oclusal y seriada. Imagen detallada de una zona de la boca.</p>
-            <button type="button" class="ver-ejemplo" data-ejemplo="periapical"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg><span>Ver ejemplo</span></button>
-            <p class="servicio__precio">desde S/ 15</p>
-          </article>
-
-          <article class="servicio revelar">
-            <svg class="servicio__icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9c0 5 4 9 9 9s9-4 9-9M7 11v2M10 12.500v2M14 12.500v2M17 11v2"/></svg>
-            <h3>Radiografía panorámica</h3>
-            <p>Toda la boca en una sola imagen. Digital S/ 25 o impresa S/ 40.</p>
-            <button type="button" class="ver-ejemplo" data-ejemplo="panoramica"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg><span>Ver ejemplo</span></button>
-            <p class="servicio__precio">desde S/ 25</p>
-          </article>
-
-          <article class="servicio revelar">
-            <svg class="servicio__icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="12" cy="10.500" r="3.200"/><path d="M6 20c1-3 3-4.500 6-4.500s5 1.500 6 4.500"/></svg>
-            <h3>Radiografías extraorales</h3>
-            <p>Cráneo, rostro, ATM, senos maxilares y edad ósea. Digitales o impresas.</p>
-            <button type="button" class="ver-ejemplo" data-ejemplo="waters"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg><span>Ver ejemplo</span></button>
-            <p class="servicio__precio">desde S/ 25</p>
-          </article>
-
-          <article class="servicio revelar">
-            <svg class="servicio__icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V5M4 20h16M4 20L18 8M9 20a5.500 5.500 0 0 0-1.800-4"/></svg>
-            <h3>Cefalometría computarizada</h3>
-            <p>Análisis Steiner, Ricketts, McNamara, Jarabak y Fishman.</p>
-            <button type="button" class="ver-ejemplo" data-ejemplo="lateral"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg><span>Ver ejemplo</span></button>
-            <p class="servicio__precio">S/ 15 <small>por análisis</small></p>
-          </article>
-
-          <article class="servicio revelar">
-            <svg class="servicio__icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 4.500v9L12 21l-8-4.500v-9L12 3zM12 12l8-4.500M12 12v9M12 12L4 7.500"/></svg>
-            <h3>Tomografía dental 3D (Cone Beam)</h3>
-            <p>Imagen en 3D de dientes y hueso, con o sin informe.</p>
-            <button type="button" class="ver-ejemplo" data-ejemplo="tomografia"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg><span>Ver ejemplo</span></button>
-            <p class="servicio__precio">desde S/ 160</p>
-          </article>
-
-          <article class="servicio servicio--cita revelar">
-            <svg class="servicio__icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M9 15l2 2 4-4"/></svg>
-            <h3>¿Tienes una orden de tu dentista?</h3>
-            <p>Envíanos una foto de la orden por WhatsApp y te decimos el precio y el horario.</p>
-            <a class="boton boton--negro" href="https://wa.me/51947707736?text=Hola%2C%20tengo%20una%20orden%20de%20radiograf%C3%ADa%20de%20mi%20dentista" target="_blank" rel="noopener">Enviar mi orden</a>
-          </article>
-        </div>
-
-        <p class="servicios__nota">Tiempo aproximado de las radiografías: 30 minutos.</p>
-        <!-- Confirmado: el centro NO hace tratamientos ni atención odontológica en sillón; solo radiología e imagen. -->
-        <div class="botones">
-          <a class="boton boton--oro" href="https://wa.me/51947707736?text=Hola%2C%20quiero%20consultar%20por%20radiograf%C3%ADas%20dentales" target="_blank" rel="noopener">Consultar por WhatsApp</a>
-        </div>
-      </div>
-    </section>
 
     <!-- ============ 4B. LISTA DE PRECIOS ============ -->
     <!-- Fuente: tarifario de Dimsac Dent (noviembre 2026), confirmado como precio para todos los pacientes. -->
@@ -301,6 +241,30 @@
 
         <p class="servicios__nota">Los precios pueden cambiar. Confírmalos al pedir tu cita.</p>
 
+        <div class="botones">
+          <a class="boton boton--oro" href="https://wa.me/51947707736?text=Hola%2C%20quiero%20consultar%20un%20precio" target="_blank" rel="noopener">Consultar un precio por WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ORDEN DEL DENTISTA ============ -->
+    <section id="orden" class="seccion">
+      <div class="contenedor">
+        <article class="orden revelar">
+          <svg class="servicio__icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M9 15l2 2 4-4"/></svg>
+          <h2>¿Tienes una orden de tu dentista?</h2>
+          <p>Envíanos una foto de la orden por WhatsApp y te decimos el precio y el horario.</p>
+          <p class="orden__tiempo"><strong>Tiempo aproximado de las radiografías: 30 minutos.</strong></p>
+          <!-- Confirmado: el centro NO hace tratamientos ni atención odontológica en sillón; solo radiología e imagen. -->
+          <a class="boton boton--negro boton--grande" href="https://wa.me/51947707736?text=Hola%2C%20tengo%20una%20orden%20de%20radiograf%C3%ADa%20de%20mi%20dentista" target="_blank" rel="noopener">Enviar mi orden por WhatsApp</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ FORMAS DE PAGO ============ -->
+    <section id="pagos" class="seccion seccion--crema">
+      <div class="contenedor">
+
         <div class="pagos revelar">
           <h3>Formas de pago</h3>
           <ul class="pagos__lista">
@@ -311,9 +275,6 @@
           </ul>
           <!-- TODO (opcional): número de Yape/Plin y cuenta bancaria, si la dueña quiere publicarlos -->
         </div>
-        <div class="botones">
-          <a class="boton boton--oro" href="https://wa.me/51947707736?text=Hola%2C%20quiero%20consultar%20un%20precio" target="_blank" rel="noopener">Consultar un precio por WhatsApp</a>
-        </div>
       </div>
     </section>
 
@@ -322,7 +283,7 @@
       <div class="contenedor">
         <h2 class="revelar">Cómo pedir tu cita</h2>
         <ol class="pasos">
-          <li class="revelar"><span class="paso__num" aria-hidden="true">1</span><div><h3>Escríbenos o llámanos</h3><p>Por WhatsApp o teléfono al 947 707 736.</p></div></li>
+          <li class="revelar"><span class="paso__num" aria-hidden="true">1</span><div><h3>Escríbenos o llámanos</h3><p>Por WhatsApp o por teléfono:</p><a class="cita__tel" href="tel:+51947707736">947 707 736</a></div></li>
           <li class="revelar"><span class="paso__num" aria-hidden="true">2</span><div><h3>Te damos fecha y hora</h3><p>Coordinamos el día que mejor te convenga.</p></div></li>
           <li class="revelar"><span class="paso__num" aria-hidden="true">3</span><div><h3>Visítanos</h3><p>Te esperamos en nuestro local.</p></div></li>
         </ol>
@@ -333,10 +294,36 @@
       </div>
     </section>
 
+    <!-- ============ 7. NUESTROS LOCALES ============ -->
+    <section id="locales" class="seccion seccion--crema">
+      <div class="contenedor">
+        <h2 class="revelar">Nuestros locales</h2>
+        <p class="seccion__intro">Tenemos dos locales en Arequipa.</p>
+
+        <div class="tarjetas">
+          <article class="tarjeta revelar">
+            <h3>Local Los Coritos</h3>
+            <p><strong>Dirección:</strong> Coop. Daniel A. Carrión G-31B, Av. Paseo de La Cultura, José Luis Bustamante y Rivero, Arequipa 04009</p>
+            <p><strong>Horario (corrido, sin cerrar al mediodía):</strong><br>Lunes a viernes: 9:00 a. m. a 7:00 p. m.<br>Sábado: 9:00 a. m. a 5:00 p. m.<br>Domingo: cerrado</p>
+            <a class="boton boton--oro" href="https://maps.app.goo.gl/W5UJmP2ibYKKsiDV7" target="_blank" rel="noopener">Ver en Google Maps</a>
+          </article>
+
+          <article class="tarjeta revelar">
+            <h3>Local La Pacheta</h3>
+            <p>Por el cementerio de La Pacheta.</p>
+            <p><strong>Dirección:</strong> Calle Italia 666, Urb. Las Casuarinas (Satélite Chico), José Luis Bustamante y Rivero, Arequipa</p>
+            <p><strong>Horario:</strong><br>Lunes a viernes: 9:00 a. m. a 1:00 p. m. y 2:30 p. m. a 7:00 p. m.<br>Sábado y domingo: cerrado</p>
+            <!-- Ubicación por coordenadas (16°26'00.5"S 71°31'55.3"W). Cambiar por el enlace de la ficha de Google Maps cuando exista. -->
+            <a class="boton boton--oro" href="https://www.google.com/maps/search/?api=1&amp;query=-16.433472%2C-71.532028" target="_blank" rel="noopener">Ver en Google Maps</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ 6. CONOCE A NUESTRO EQUIPO ============ -->
     <!-- Para agregar a una persona: copiar un bloque <article class="persona revelar">, cambiar foto (img/equipo-nombre.jpg), nombre, cargo y colegiatura.
          Solo publicar fotos y datos con el permiso de cada profesional. -->
-    <section id="equipo" class="seccion seccion--crema">
+    <section id="equipo" class="seccion">
       <div class="contenedor">
         <h2 class="revelar">Conoce a nuestro equipo</h2>
         <p class="seccion__intro">Doctores y radiólogos que cuidan de ti en cada visita.</p>
@@ -363,32 +350,6 @@
               <svg viewBox="0 0 24 24"><circle cx="12" cy="8.500" r="4"/><path d="M4 21c1-4.500 4-6.500 8-6.500s7 2 8 6.500"/></svg>
             </div>
             <p class="todo">TODO: foto (con permiso), nombre, cargo, especialidad, local y colegiatura (opcional)</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ 7. NUESTROS LOCALES ============ -->
-    <section id="locales" class="seccion">
-      <div class="contenedor">
-        <h2 class="revelar">Nuestros locales</h2>
-        <p class="seccion__intro">Tenemos dos locales en Arequipa.</p>
-
-        <div class="tarjetas">
-          <article class="tarjeta revelar">
-            <h3>Local Los Coritos</h3>
-            <p><strong>Dirección:</strong> Coop. Daniel A. Carrión G-31B, Av. Paseo de La Cultura, José Luis Bustamante y Rivero, Arequipa 04009</p>
-            <p><strong>Horario (corrido, sin cerrar al mediodía):</strong><br>Lunes a viernes: 9:00 a. m. a 7:00 p. m.<br>Sábado: 9:00 a. m. a 5:00 p. m.<br>Domingo: cerrado</p>
-            <a class="boton boton--oro" href="https://maps.app.goo.gl/W5UJmP2ibYKKsiDV7" target="_blank" rel="noopener">Ver en Google Maps</a>
-          </article>
-
-          <article class="tarjeta revelar">
-            <h3>Local La Pacheta</h3>
-            <p>Por el cementerio de La Pacheta.</p>
-            <p><strong>Dirección:</strong> Calle Italia 666, Urb. Las Casuarinas (Satélite Chico), José Luis Bustamante y Rivero, Arequipa</p>
-            <p><strong>Horario:</strong><br>Lunes a viernes: 9:00 a. m. a 1:00 p. m. y 2:30 p. m. a 7:00 p. m.<br>Sábado y domingo: cerrado</p>
-            <!-- Ubicación por coordenadas (16°26'00.5"S 71°31'55.3"W). Cambiar por el enlace de la ficha de Google Maps cuando exista. -->
-            <a class="boton boton--oro" href="https://www.google.com/maps/search/?api=1&amp;query=-16.433472%2C-71.532028" target="_blank" rel="noopener">Ver en Google Maps</a>
           </article>
         </div>
       </div>
@@ -455,6 +416,6 @@
     <span>WhatsApp</span>
   </a>
 
-  <script src="js/main.js?v=19"></script>
+  <script src="js/main.js?v=20"></script>
 </body>
 </html>
