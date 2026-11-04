@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=16">
+  <link rel="stylesheet" href="css/styles.css?v=17">
 
   <!-- Datos estructurados para Google (negocio local) -->
   <script type="application/ld+json">
@@ -40,8 +40,8 @@
     "paymentAccepted": "Efectivo, Yape, Plin, Transferencia bancaria",
     "address": { "@type": "PostalAddress", "addressLocality": "Arequipa", "addressCountry": "PE" },
     "openingHoursSpecification": [
-      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "09:00", "closes": "13:00" },
-      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "14:30", "closes": "19:00" }
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "19:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "17:00" }
     ]
     /* TODO: agregar "url", "logo", dirección exacta (streetAddress), "geo" y "hasMap" de cada local */
   }
@@ -369,7 +369,7 @@
           <article class="tarjeta revelar">
             <h3>Local Los Coritos</h3>
             <p><strong>Dirección:</strong> Coop. Daniel A. Carrión G-31B, Av. Paseo de La Cultura, José Luis Bustamante y Rivero, Arequipa 04009</p>
-            <p><strong>Horario:</strong><br>Lunes a sábado: 9:00 a. m. a 1:00 p. m. y 2:30 p. m. a 7:00 p. m.<br>Domingo: cerrado</p>
+            <p><strong>Horario (corrido, sin cerrar al mediodía):</strong><br>Lunes a viernes: 9:00 a. m. a 7:00 p. m.<br>Sábado: 9:00 a. m. a 5:00 p. m.<br>Domingo: cerrado</p>
             <a class="boton boton--oro" href="https://maps.app.goo.gl/W5UJmP2ibYKKsiDV7" target="_blank" rel="noopener">Ver en Google Maps</a>
           </article>
 
@@ -377,7 +377,7 @@
             <h3>Local La Pacheta</h3>
             <p>Por el cementerio de La Pacheta.</p>
             <p><strong>Dirección:</strong> Calle Italia 666, Urb. Las Casuarinas (Satélite Chico), José Luis Bustamante y Rivero, Arequipa</p>
-            <p><strong>Horario:</strong><br>Lunes a sábado: 9:00 a. m. a 1:00 p. m. y 2:30 p. m. a 7:00 p. m.<br>Domingo: cerrado</p>
+            <p><strong>Horario:</strong><br>Lunes a viernes: 9:00 a. m. a 1:00 p. m. y 2:30 p. m. a 7:00 p. m.<br>Sábado y domingo: cerrado</p>
             <!-- Ubicación por coordenadas (16°26'00.5"S 71°31'55.3"W). Cambiar por el enlace de la ficha de Google Maps cuando exista. -->
             <a class="boton boton--oro" href="https://www.google.com/maps/search/?api=1&amp;query=-16.433472%2C-71.532028" target="_blank" rel="noopener">Ver en Google Maps</a>
           </article>
@@ -412,7 +412,7 @@
       </div>
       <div>
         <p><strong>Horario</strong></p>
-        <p>Lunes a sábado, en ambos locales:<br>9:00 a. m. a 1:00 p. m. y 2:30 a 7:00 p. m.<br>Domingo: cerrado</p>
+        <p><strong>Los Coritos:</strong> lun a vie 9:00 a. m. a 7:00 p. m.; sáb 9:00 a. m. a 5:00 p. m.<br><strong>La Pacheta:</strong> lun a vie 9:00 a. m. a 1:00 p. m. y 2:30 a 7:00 p. m.<br>Domingo: cerrado</p>
       </div>
     </div>
     <p class="pie__copia">&copy; <span id="anio">2026</span> Dimsac Dent. Arequipa, Perú.</p>
@@ -434,6 +434,6 @@
     <span>WhatsApp</span>
   </a>
 
-  <script src="js/main.js?v=16"></script>
+  <script src="js/main.js?v=17"></script>
 </body>
 </html>
