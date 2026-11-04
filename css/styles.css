@@ -414,8 +414,7 @@ h3 { font-weight: 600; }
   .marca__texto { display: none; }
 }
 
-/* ===== v13: modo claro / oscuro ===== */
-/* Colores de las zonas claras como "fichas" (tokens). El modo oscuro solo cambia estos valores. */
+/* ===== v13: colores de las zonas claras como "fichas" (tokens) ===== */
 :root {
   --fondo: #fffaf0; --fondo-alt: #ffffff; --tarjeta: #ffffff; --tarjeta-suave: #fffaf0;
   --borde: #eadfc0; --borde-suave: #f0e8d2; --cabeza-tabla: #fbf6e8; --hover: #fdf6e3;
@@ -423,23 +422,6 @@ h3 { font-weight: 600; }
   --contorno: #111111; --borde-negro: transparent; --sombra: rgba(0,0,0,.06);
   color-scheme: light;
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --fondo: #121212; --fondo-alt: #1a1a1a; --tarjeta: #222222; --tarjeta-suave: #222222;
-    --borde: #3d3627; --borde-suave: #303030; --cabeza-tabla: #2a2519; --hover: #2c2820;
-    --titulo: #f5f5f5; --texto: #e8e8e8; --gris: #bdbdbd; --foto-vacia: #2c2c2c;
-    --contorno: #e0a800; --borde-negro: #e0a800; --sombra: rgba(0,0,0,.45);
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --fondo: #121212; --fondo-alt: #1a1a1a; --tarjeta: #222222; --tarjeta-suave: #222222;
-  --borde: #3d3627; --borde-suave: #303030; --cabeza-tabla: #2a2519; --hover: #2c2820;
-  --titulo: #f5f5f5; --texto: #e8e8e8; --gris: #bdbdbd; --foto-vacia: #2c2c2c;
-  --contorno: #e0a800; --borde-negro: #e0a800; --sombra: rgba(0,0,0,.45);
-  color-scheme: dark;
-}
-
 body { background: var(--fondo); color: var(--texto); }
 h1, h2, h3 { color: var(--titulo); }
 a:focus-visible, button:focus-visible, summary:focus-visible { outline-color: var(--contorno); }
@@ -474,27 +456,6 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline-color: va
 .wa-burbuja__cerrar { color: var(--titulo); }
 .wa-burbuja__cerrar:hover { background: var(--hover); }
 
-/* Botón para cambiar el tema (luna / sol) */
-.tema-boton {
-  display: inline-grid; place-items: center; flex: none; width: 48px; height: 48px; margin-left: auto;
-  background: transparent; color: var(--oro); border: 2px solid var(--oro); border-radius: 50%; cursor: pointer;
-  transition: transform .18s ease, background-color .18s ease;
-}
-.tema-boton:hover { background: #222; }
-.tema-boton:active { transform: scale(.92); }
-.tema-boton svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.tema-boton__luna { fill: currentColor !important; }
-.tema-boton__sol { display: none; }
-:root[data-theme="dark"] .tema-boton__luna { display: none; }
-:root[data-theme="dark"] .tema-boton__sol { display: block; }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .tema-boton__luna { display: none; }
-  :root:not([data-theme="light"]) .tema-boton__sol { display: block; }
-}
-@media (min-width: 900px) {
-  .tema-boton { order: 5; margin-left: 0; }
-}
-
 /* Filas de precios que abren WhatsApp */
 .fila-wa { cursor: pointer; }
 .fila-wa th a { color: inherit; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
@@ -503,12 +464,11 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline-color: va
 .fila-wa:hover th a { text-decoration: underline; text-decoration-color: var(--oro); text-decoration-thickness: 2px; text-underline-offset: 4px; }
 .fila-wa:active { background: var(--cabeza-tabla); }
 .sr { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
-@media (prefers-reduced-motion: reduce) { .fila-wa__icono, .tema-boton { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .fila-wa__icono { transition: none; } }
 @media (max-width: 399px) {
   .cabecera__fila { gap: 8px; }
   .marca__logo { height: 32px; }
   .marca__texto { font-size: .98rem; letter-spacing: .04em; }
-  .tema-boton { width: 44px; height: 44px; }
   .menu-boton { padding: 0 12px; }
 }
 /* Botones en columna (Contacto): que no se estiren hacia abajo */
