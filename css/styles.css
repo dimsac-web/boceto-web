@@ -526,3 +526,10 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline-color: va
 .seccion--oscura .pasos a:not(.cita__tel) { color: var(--oro); }
 /* v23: icono de la tarjeta de orden visible (era un cuadro negro vacío) */
 .orden .servicio__icono { background: var(--negro); stroke: var(--oro); fill: none; padding: 9px; box-sizing: border-box; width: 52px; height: 52px; border-radius: 14px; }
+
+/* v24: lugar sobre las fotos del recorrido */
+.escena figcaption > span:nth-of-type(2) { color: #e8e8e8; }
+.recorrido--anim .escena figcaption > span:nth-of-type(2) { font-size: 1.2rem; }
+.escena__lugar { display: inline-flex; align-items: center; justify-self: start; min-height: 44px; margin-top: 6px; padding: 6px 16px; border-radius: 999px; background: var(--oro); color: var(--negro) !important; font-weight: 700; font-size: 1.05rem; text-decoration: none; }
+.escena__lugar:hover { background: #f2c230; }
+.recorrido--anim .escena figcaption { z-index: 3; }
