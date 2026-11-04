@@ -1,12 +1,20 @@
-// La página siempre se abre desde arriba (aunque el enlace traiga #precios u otra sección,
-// o el navegador recuerde dónde se quedó la última vez). Los enlaces del menú siguen funcionando normal.
+// La página abre arriba, salvo que el enlace traiga una sección válida (ej. /#precios): entonces va a esa sección.
 if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
 (function () {
   const subir = () => window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-  if (location.hash) history.replaceState(null, '', location.pathname + location.search);
-  subir();
-  window.addEventListener('load', subir, { once: true });
-  window.addEventListener('pageshow', (e) => { if (e.persisted) subir(); });
+  const destino = () => {
+    const id = decodeURIComponent(location.hash.slice(1));
+    return id ? document.getElementById(id) : null;
+  };
+  const ir = () => {
+    const el = destino();
+    if (el) el.scrollIntoView({ behavior: 'instant', block: 'start' });
+    else subir();
+  };
+  if (location.hash && !destino()) history.replaceState(null, '', location.pathname + location.search);
+  ir();
+  window.addEventListener('load', ir, { once: true });
+  window.addEventListener('pageshow', (e) => { if (e.persisted) ir(); });
 })();
 
 // Menú móvil
