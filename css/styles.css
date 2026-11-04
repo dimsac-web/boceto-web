@@ -533,3 +533,14 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline-color: va
 .escena__lugar { display: inline-flex; align-items: center; justify-self: start; min-height: 44px; margin-top: 6px; padding: 6px 16px; border-radius: 999px; background: var(--oro); color: var(--negro) !important; font-weight: 700; font-size: 1.05rem; text-decoration: none; }
 .escena__lugar:hover { background: #f2c230; }
 .recorrido--anim .escena figcaption { z-index: 3; }
+
+/* v25: botón "Cómo llegar" fijo sobre las fotos del recorrido (solo dentro del recorrido) */
+.escena__lugar { display: none; }
+.recorrido__lugar { display: none; }
+.recorrido--anim .recorrido__lugar {
+  display: inline-flex; align-items: center; position: absolute; z-index: 4; top: 56px; left: 16px;
+  min-height: 44px; padding: 6px 16px; border-radius: 999px; background: var(--oro); color: var(--negro) !important;
+  font-weight: 700; font-size: 1.05rem; text-decoration: none; box-shadow: 0 4px 14px rgba(0,0,0,.4);
+}
+.recorrido--anim .recorrido__lugar:hover { background: #f2c230; }
+@media (min-width: 900px) { .recorrido--anim .recorrido__lugar { top: 14px; } }
