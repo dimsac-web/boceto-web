@@ -21,9 +21,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=21">
+  <link rel="stylesheet" href="css/styles.css?v=22">
 
-  <!-- Datos estructurados para Google (negocio local) -->
+  <!-- Datos estructurados para Google (negocio local). Pendiente: agregar "url", "logo" y "geo" cuando exista el dominio final. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -39,11 +39,26 @@
     "currenciesAccepted": "PEN",
     "paymentAccepted": "Efectivo, Yape, Plin, Transferencia bancaria",
     "address": { "@type": "PostalAddress", "addressLocality": "Arequipa", "addressCountry": "PE" },
-    "openingHoursSpecification": [
-      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "19:00" },
-      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "17:00" }
+    "department": [
+      {
+        "@type": "MedicalBusiness",
+        "name": "Dimsac Dent – Local Los Coritos",
+        "address": { "@type": "PostalAddress", "streetAddress": "Coop. Daniel A. Carrión G-31B, Av. Paseo de La Cultura", "addressLocality": "José Luis Bustamante y Rivero, Arequipa", "postalCode": "04009", "addressCountry": "PE" },
+        "openingHoursSpecification": [
+          { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "19:00" },
+          { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "17:00" }
+        ]
+      },
+      {
+        "@type": "MedicalBusiness",
+        "name": "Dimsac Dent – Local La Apacheta",
+        "address": { "@type": "PostalAddress", "streetAddress": "Calle Italia 666, Urb. Las Casuarinas (Satélite Chico)", "addressLocality": "José Luis Bustamante y Rivero, Arequipa", "addressCountry": "PE" },
+        "openingHoursSpecification": [
+          { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "13:00" },
+          { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "14:30", "closes": "19:00" }
+        ]
+      }
     ]
-    /* TODO: agregar "url", "logo", dirección exacta (streetAddress), "geo" y "hasMap" de cada local */
   }
   </script>
 </head>
@@ -416,6 +431,6 @@
     <span>WhatsApp</span>
   </a>
 
-  <script src="js/main.js?v=21"></script>
+  <script src="js/main.js?v=22"></script>
 </body>
 </html>
