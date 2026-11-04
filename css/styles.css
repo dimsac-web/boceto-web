@@ -544,3 +544,8 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline-color: va
 }
 .recorrido--anim .recorrido__lugar:hover { background: #f2c230; }
 @media (min-width: 900px) { .recorrido--anim .recorrido__lugar { top: 14px; } }
+
+/* v26: botones de la tarjeta de cada local, apilados y a lo ancho en celular */
+.tarjeta .boton { margin-top: 12px; }
+.tarjeta .boton + .boton { margin-top: 10px; }
+@media (max-width: 599px) { .tarjeta > .boton { display: flex; width: 100%; } }
