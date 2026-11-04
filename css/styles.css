@@ -513,3 +513,5 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline-color: va
 }
 /* Botones en columna (Contacto): que no se estiren hacia abajo */
 .botones--columna .boton { flex: 0 0 auto; }
+/* En pantallas muy bajitas (ventana pequeña o celular girado) la burbuja taparía el menú: no se muestra */
+@media (max-height: 560px) { .wa-burbuja { display: none; } }
