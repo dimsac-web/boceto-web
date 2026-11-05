@@ -2,6 +2,10 @@
 
 Formato: fecha, decisión, motivo. Lo más reciente arriba.
 
+## 2026-11-05
+- **Desarrollo paralelo con ChatGPT y Claude Code:** el responsable puede asignar tareas distintas a cada IA; ambas trabajan en ramas/PR separados desde `main`, sin tocar la rama ajena. GitHub sirve de intercambio, y el responsable comparte el enlace del PR cuando haga falta una revisión cruzada. Codex revisa los cambios de ambos por el método de solo lectura a través de Claude Code; cada revisión reporta límites de pruebas y no reemplaza aprobación humana. Nunca hay fusión ni publicación automática; los trabajos sobre archivos compartidos se integran secuencialmente. Motivo: distribuir el desarrollo sin conflictos y conservar el control humano.
+- **Flujo de trabajo permanente: Claude Code desarrolla, Codex revisa.** Claude Code es el desarrollador principal y trabaja en ramas separadas de `main`; Codex es revisor independiente de solo lectura, consultado por `codex exec --sandbox read-only -` con el diff por entrada estándar (no `codex review`, bloqueado por PowerShell). Máximo 2 rondas de Codex por tarea. Los cambios importantes de diseño se proponen antes de implementarse. Nada se fusiona ni se publica en `main` sin aprobación explícita; el review gate automático queda desactivado; no se desactiva el sandbox ni se cambian políticas de seguridad; no se envían secretos ni datos privados a Codex; no se presentan revisiones estáticas como pruebas visuales. Reglas completas en `CLAUDE.md`, plantilla en `docs/PLANTILLA_REVISION_CODEX.md`. Motivo: que el responsable solo dé instrucciones iniciales y revise el resultado final, con revisión independiente y bajo consumo de tokens.
+
 ## 2026-11-04
 - **WhatsApp por local**: un botón "Pedir cita por WhatsApp" en cada tarjeta de Locales, mismo número (947 707 736) y mensaje distinto por sede. Aprobado tras revisión de ChatGPT.
 - **Automatización `@claude` en GitHub**: se deja para después; primero probar en un repositorio aparte. Mientras tanto, ciclo manual con pull requests.
