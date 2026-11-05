@@ -465,6 +465,24 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline-color: va
 .fila-wa:active { background: var(--cabeza-tabla); }
 .sr { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 @media (prefers-reduced-motion: reduce) { .fila-wa__icono { transition: none; } }
+
+/* Tablas de precios en celular: que "Impresa" y "Digital" se vean completas sin desplazar la tabla.
+   Menos relleno lateral, lista 8 px más ancha por lado e icono de WhatsApp de 16 px. Letra (18 px), textos y áreas táctiles no cambian.
+   Si la pantalla es aún más angosta, .tabla-envoltura conserva overflow-x:auto como protección. */
+@media (max-width: 599px) {
+  .precios-lista { margin-left: -8px; margin-right: -8px; }
+  .tabla-precios th, .tabla-precios td { padding-left: 6px; padding-right: 6px; }
+  .tabla-precios th:first-child, .tabla-precios td:first-child { padding-left: 10px; }
+  .tabla-precios th:last-child, .tabla-precios td:last-child { padding-right: 10px; }
+  .fila-wa th a { gap: 6px; }
+  .fila-wa__icono { width: 16px; height: 16px; }
+}
+@media (max-width: 340px) {
+  .tabla-precios th, .tabla-precios td { padding-left: 3px; padding-right: 3px; }
+  .tabla-precios th:first-child, .tabla-precios td:first-child { padding-left: 6px; }
+  .tabla-precios th:last-child, .tabla-precios td:last-child { padding-right: 6px; }
+  .fila-wa th a { gap: 4px; }
+}
 @media (max-width: 399px) {
   .cabecera__fila { gap: 8px; }
   .marca__logo { height: 32px; }
