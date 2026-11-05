@@ -549,3 +549,13 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline-color: va
 .tarjeta .boton { margin-top: 12px; }
 .tarjeta .boton + .boton { margin-top: 10px; }
 @media (max-width: 599px) { .tarjeta > .boton { display: flex; width: 100%; } }
+
+/* v27: botón flotante de WhatsApp más discreto en celular (círculo de 56 px solo con el icono) */
+.wa-flotante { bottom: max(16px, env(safe-area-inset-bottom)); animation-iteration-count: 3; }
+body { padding-bottom: calc(80px + env(safe-area-inset-bottom)); }
+.wa-burbuja { bottom: calc(max(16px, env(safe-area-inset-bottom)) + 74px); }
+.en-precios .wa-burbuja { display: none; }
+@media (max-width: 899px) {
+  .wa-flotante { width: 56px; padding: 0; justify-content: center; gap: 0; }
+  .wa-flotante span { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+}

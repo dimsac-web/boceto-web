@@ -3,6 +3,7 @@
 Formato: fecha, decisión, motivo. Lo más reciente arriba.
 
 ## 2026-11-04
+- **Botón flotante de WhatsApp compacto en celular**: círculo de 56 px solo con el icono (nombre accesible conservado), latido limitado a 3 repeticiones, burbuja oculta en la sección de precios y respeto del área segura del iPhone. En escritorio conserva el botón con texto. Aprobado tras revisión visual en iPhone.
 - **WhatsApp por local**: un botón "Pedir cita por WhatsApp" en cada tarjeta de Locales, mismo número (947 707 736) y mensaje distinto por sede. Aprobado tras revisión de ChatGPT.
 - **Automatización `@claude` en GitHub**: se deja para después; primero probar en un repositorio aparte. Mientras tanto, ciclo manual con pull requests.
 - **Coordinación entre ChatGPT y Claude Code por GitHub**: archivos de reglas, registro y pull requests. Sin API adicional.

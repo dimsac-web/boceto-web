@@ -213,3 +213,12 @@ document.addEventListener('click', (e) => {
   visor.addEventListener('click', (ev) => { if (ev.target === visor) visor.close(); });
   visor.addEventListener('close', () => { $('visorImg').src = ''; if (origen) origen.focus(); });
 })();
+
+// La burbuja de WhatsApp no aparece mientras se ven los precios, para no tapar la tabla.
+(function () {
+  const precios = document.getElementById('precios');
+  if (!precios || !('IntersectionObserver' in window)) return;
+  new IntersectionObserver((lista) => {
+    document.body.classList.toggle('en-precios', lista[0].isIntersecting);
+  }).observe(precios);
+})();
