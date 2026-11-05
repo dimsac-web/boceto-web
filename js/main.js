@@ -214,11 +214,11 @@ document.addEventListener('click', (e) => {
   visor.addEventListener('close', () => { $('visorImg').src = ''; if (origen) origen.focus(); });
 })();
 
-// La burbuja de WhatsApp no aparece mientras se ven los precios, para no tapar la tabla.
+// El botón y la burbuja de WhatsApp se ocultan mientras se ve la lista de precios, para no tapar importes.
 (function () {
   const precios = document.getElementById('precios');
   if (!precios || !('IntersectionObserver' in window)) return;
   new IntersectionObserver((lista) => {
-    document.body.classList.toggle('en-precios', lista[0].isIntersecting);
+    document.body.classList.toggle('en-precios', lista[lista.length - 1].isIntersecting);
   }).observe(precios);
 })();
