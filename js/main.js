@@ -213,3 +213,12 @@ document.addEventListener('click', (e) => {
   visor.addEventListener('click', (ev) => { if (ev.target === visor) visor.close(); });
   visor.addEventListener('close', () => { $('visorImg').src = ''; if (origen) origen.focus(); });
 })();
+
+// El botón y la burbuja de WhatsApp se ocultan mientras se ve la lista de precios, para no tapar importes.
+(function () {
+  const precios = document.getElementById('precios');
+  if (!precios || !('IntersectionObserver' in window)) return;
+  new IntersectionObserver((lista) => {
+    document.body.classList.toggle('en-precios', lista[lista.length - 1].isIntersecting);
+  }).observe(precios);
+})();

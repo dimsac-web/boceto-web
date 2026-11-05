@@ -8,6 +8,7 @@ Formato: fecha, decisión, motivo. Lo más reciente arriba.
 - **Tablas de precios en celular (≤599 px)**: menos relleno lateral en las celdas, lista de precios 8 px más ancha por lado (tarjetas a 8 px del borde, aprobado frente a 4 px) e icono de WhatsApp de 16 px, para que "Impresa" y "Digital" se vean completas a 360 y 390 px sin desplazar la tabla. Letra de 18 px, textos, precios, enlaces y escritorio sin cambios; `overflow-x:auto` se conserva como protección.
 
 ## 2026-11-04
+- **Botón flotante de WhatsApp compacto en celular**: círculo de 56 px solo con el icono (nombre accesible conservado), latido limitado a 3 repeticiones, burbuja oculta en la sección de precios y respeto del área segura del iPhone. En escritorio conserva el botón con texto. Aprobado tras revisión visual en iPhone.
 - **WhatsApp por local**: un botón "Pedir cita por WhatsApp" en cada tarjeta de Locales, mismo número (947 707 736) y mensaje distinto por sede. Aprobado tras revisión de ChatGPT.
 - **Automatización `@claude` en GitHub**: se deja para después; primero probar en un repositorio aparte. Mientras tanto, ciclo manual con pull requests.
 - **Coordinación entre ChatGPT y Claude Code por GitHub**: archivos de reglas, registro y pull requests. Sin API adicional.
