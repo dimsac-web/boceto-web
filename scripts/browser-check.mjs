@@ -1,6 +1,6 @@
 // Pruebas de diseño móvil con Chrome real; sin npm ni Playwright.
 import { spawn, spawnSync } from 'node:child_process';
-import { existsSync, mkdtempSync, readFileSync, rmSync } from 'node:fs';
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
@@ -17,9 +17,28 @@ let socket;
 let seq=0;
 const pending = new Map();
 let failures=0;
+let screenshotTask;
+// Captura solo el primer fallo, sin interrumpir el estado de error del check.
+async function saveFailureScreenshot(reason) {
+  if (!socket || socket.readyState !== WebSocket.OPEN) {
+    console.warn('Captura no disponible: Chrome DevTools todavía no está conectado.');
+    return;
+  }
+  const result = await send('Page.captureScreenshot', {format:'png',captureBeyondViewport:false});
+  if (!result.data) throw new Error('Chrome no devolvió datos de imagen');
+  mkdirSync('artifacts', {recursive:true});
+  writeFileSync('artifacts/browser-failure.png', Buffer.from(result.data,'base64'));
+  writeFileSync('artifacts/browser-failure.txt', 'Primera prueba fallida: '+reason+'\\nFecha UTC: '+new Date().toISOString()+'\\n');
+  console.log('Captura del fallo guardada en artifacts/browser-failure.png');
+}
+function captureOnFailure(reason) {
+  if (!screenshotTask) screenshotTask = saveFailureScreenshot(reason).catch(error => {
+    console.warn('No se pudo guardar la captura: '+error.message);
+  });
+}
 function assert(ok, label, detail='') {
   console.log((ok?'OK':'FALLO')+': '+label+(detail?' ('+detail+')':''));
-  if (!ok) failures++;
+  if (!ok) { failures++; captureOnFailure(label+(detail?' ('+detail+')':'')); }
 }
 async function wait(check,label,ms=10000) {
   const deadline=Date.now()+ms;
@@ -116,8 +135,9 @@ try {
   await send('Emulation.setEmulatedMedia',{features:[{name:'prefers-reduced-motion',value:'reduce'}]});
   assert(await evaluate("matchMedia('(prefers-reduced-motion: reduce)').matches&&getComputedStyle(document.querySelector('.wa-flotante')).animationName==='none'"),
     'Movimiento reducido elimina latido');
-} catch(e){console.error('ERROR:',e.message);failures++;}
+} catch(e){console.error('ERROR:',e.message);failures++;captureOnFailure(e.message);}
 finally {
+  if(screenshotTask) await screenshotTask;
   socket?.close();
   if(child.exitCode===null) { child.kill('SIGTERM'); await Promise.race([new Promise(r=>child.once('exit',r)),sleep(1800)]); }
   try{rmSync(dir,{recursive:true,force:true,maxRetries:5,retryDelay:100});}catch{}
