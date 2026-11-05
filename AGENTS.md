@@ -19,12 +19,14 @@ Sitio estático (HTML, CSS y JS sin frameworks) del centro de radiología odonto
 ## Cómo trabajamos
 - **Claude Code**: desarrollador principal; implementa, mantiene y prueba (móvil y escritorio) antes de publicar. Sigue el flujo de `CLAUDE.md`.
 - **Codex (OpenAI)**: revisor independiente de solo lectura; revisa el diff que Claude Code le envía por `codex exec --sandbox read-only -`. No modifica archivos ni fusiona.
-- **ChatGPT**: revisa código, diseño y experiencia de usuario; propone mejoras con un Issue o una rama y un pull request.
+- **ChatGPT**: también puede desarrollar tareas que el responsable le asigne expresamente, en una rama propia desde `main`, y preparar un pull request sin fusionarlo. Revisa diseño, código y experiencia de usuario dentro de las herramientas disponibles; declara cualquier prueba que no pudo ejecutar.
 - Antes de implementar una propuesta, se analiza si encaja con este documento.
 - **Nadie sube directo a `main` si hay un pull request abierto que toque los mismos archivos.** Cambios compartidos: rama + pull request + revisión del otro.
 - Al subir CSS o JS, subir el número de versión (`?v=N`) en `index.html` para evitar caché.
 - Cada decisión importante se anota en `docs/DECISIONES.md`; el trabajo pendiente, en `docs/PENDIENTES.md`.
-- Los modelos **no conversan entre sí** por su cuenta: se comunican mediante este repositorio. La única excepción es que Claude Code envía el diff a Codex para su revisión (ver `CLAUDE.md`).
+- **Desarrollo paralelo por tareas:** cada cambio tiene un desarrollador responsable (Claude Code o ChatGPT) y una rama/PR independientes, ambos basados en `main`. No editar la rama de la otra IA ni reutilizar sus archivos sin coordinarlo. Si ambas tareas afectan los mismos archivos, se trabajan de forma secuencial para resolver conflictos antes de integrar.
+- **Revisión de ambos:** Codex puede revisar el diff de cualquier tarea, la implemente Claude Code o ChatGPT. Claude Code puede enviarle el diff con el método documentado en `CLAUDE.md`; una revisión de Codex no reemplaza las pruebas reales ni la aprobación humana.
+- **Coordinación:** GitHub (ramas, PR, comentarios y documentos) es el punto de intercambio. Este chat de ChatGPT no conversa automáticamente con la sesión local de Claude Code: el responsable comparte el enlace del PR cuando necesita pasarle una tarea o revisión. No prometer trabajo autónomo en segundo plano.
 - **Nada se fusiona ni se publica en `main` sin aprobación explícita del responsable del proyecto.**
 
 ## Privacidad
