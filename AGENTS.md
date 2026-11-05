@@ -17,13 +17,15 @@ Sitio estático (HTML, CSS y JS sin frameworks) del centro de radiología odonto
 5. Respetar `prefers-reduced-motion` y que la página funcione sin JavaScript.
 
 ## Cómo trabajamos
-- **Claude Code**: implementa, mantiene y prueba (móvil y escritorio) antes de publicar.
+- **Claude Code**: desarrollador principal; implementa, mantiene y prueba (móvil y escritorio) antes de publicar. Sigue el flujo de `CLAUDE.md`.
+- **Codex (OpenAI)**: revisor independiente de solo lectura; revisa el diff que Claude Code le envía por `codex exec --sandbox read-only -`. No modifica archivos ni fusiona.
 - **ChatGPT**: revisa código, diseño y experiencia de usuario; propone mejoras con un Issue o una rama y un pull request.
 - Antes de implementar una propuesta, se analiza si encaja con este documento.
 - **Nadie sube directo a `main` si hay un pull request abierto que toque los mismos archivos.** Cambios compartidos: rama + pull request + revisión del otro.
 - Al subir CSS o JS, subir el número de versión (`?v=N`) en `index.html` para evitar caché.
 - Cada decisión importante se anota en `docs/DECISIONES.md`; el trabajo pendiente, en `docs/PENDIENTES.md`.
-- Los dos modelos **no conversan entre sí**: se comunican solo mediante este repositorio.
+- Los modelos **no conversan entre sí** por su cuenta: se comunican mediante este repositorio. La única excepción es que Claude Code envía el diff a Codex para su revisión (ver `CLAUDE.md`).
+- **Nada se fusiona ni se publica en `main` sin aprobación explícita del responsable del proyecto.**
 
 ## Privacidad
 El repositorio es **público**. No guardar contraseñas, credenciales, información sensible ni datos identificables de pacientes. Los datos profesionales y las fotografías del equipo solo podrán publicarse con autorización de cada persona.
