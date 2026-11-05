@@ -5,6 +5,13 @@
 - Cambios pequeños y de un tema por vez; no tocar portada ni precios sin aprobación.
 - Al empezar una sesión, leer `docs/PENDIENTES.md` y `docs/DECISIONES.md`. Revisar también los Issues y pull requests abiertos cuando haya acceso; si no lo hay, trabajar con los documentos compartidos sin detener el desarrollo.
 
+## Trabajo compartido con ChatGPT como desarrollador
+- **Asignación:** el responsable decide quién implementa cada tarea. Claude Code y ChatGPT pueden programar tareas diferentes a la vez; cada uno usa su propia rama creada desde `main` y un PR independiente. No trabajan simultáneamente sobre una misma rama ni deben mezclar cambios de PR abiertos.
+- **Cuando Claude Code implementa:** seguir el flujo permanente de abajo; Codex revisa el diff, Claude corrige los fallos importantes y presenta el PR sin fusionar.
+- **Cuando ChatGPT implementa:** el responsable entrega a Claude Code el enlace del PR generado por ChatGPT. Claude comprueba la rama, el diff y las reglas, realiza las pruebas que pueda y encarga una revisión independiente a Codex usando `codex exec --sandbox read-only -`. Informa al responsable de errores, riesgos y pruebas pendientes. No modificar el PR o la rama de ChatGPT sin autorización explícita; si hace falta corregirlo, acordar quién hará la corrección.
+- **Integración:** si dos PR afectan los mismos archivos, revisar conflictos y diferencias antes de fusionar. Nunca fusionar automáticamente ni actualizar `main` sin autorización del responsable. No solicitar una revisión Codex duplicada si ya existe un informe completo y vigente del mismo diff.
+- **Límite de automatización:** GitHub es el medio compartido; ChatGPT en esta conversación y Claude Code local no se envían instrucciones entre sí automáticamente. El responsable pasa el enlace del PR y decide qué se aprueba.
+
 ## Flujo de trabajo permanente (Claude Code desarrolla, Codex revisa)
 Claude Code es el desarrollador principal. Codex (OpenAI) es el revisor independiente y **solo lee**. La persona responsable del proyecto da la instrucción inicial y revisa el resultado final; entre ambos momentos Claude Code sigue estos pasos sin pedir confirmaciones innecesarias.
 
