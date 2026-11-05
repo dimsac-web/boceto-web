@@ -56,7 +56,7 @@ try {
   await send('Page.enable');await send('Runtime.enable');
   const site='http://127.0.0.1:8765/';
   for(const width of [360,390,1280]) {
-    await send('Emulation.setDeviceMetricsOverride',{width,height:850,deviceScaleFactor:1,mobile:true});
+    await send('Emulation.setDeviceMetricsOverride',{width,height:850,deviceScaleFactor:1,mobile:width<900});
     const nav=await send('Page.navigate',{url:site});
     if(nav.errorText)throw new Error('No abre la web local: '+nav.errorText);
     await wait(()=>evaluate("document.readyState!=='loading'&&!!document.querySelector('#precios')"),'carga '+width);
@@ -82,23 +82,37 @@ try {
       assert(t.visible&&t.labels.some(s=>/Impresa/i.test(s))&&t.labels.some(s=>/Digital/i.test(s)),
         'Impresa y Digital visibles '+width);
     }
+
+    if(width<900) {
+      const initial=await evaluate("(() => {const b=document.querySelector('#menuBoton');const m=document.querySelector('#menu');return getComputedStyle(b).display!=='none'&&getComputedStyle(m).display==='none'&&b.getAttribute('aria-expanded')==='false'})()");
+      assert(initial,'Menú móvil cerrado al cargar '+width);
+      await evaluate("document.querySelector('#menuBoton').click()");
+      await wait(()=>evaluate("(() => {const b=document.querySelector('#menuBoton');const m=document.querySelector('#menu');return b.getAttribute('aria-expanded')==='true'&&getComputedStyle(m).display==='flex'})()"),'menú abierto '+width,3000);
+      assert(true,'Menú móvil abre '+width);
+      await evaluate("document.querySelector('#menu a').click()");
+      await wait(()=>evaluate("(() => {const b=document.querySelector('#menuBoton');const m=document.querySelector('#menu');return b.getAttribute('aria-expanded')==='false'&&getComputedStyle(m).display==='none'})()"),'menú cerrado al navegar '+width,3000);
+      assert(true,'Menú móvil se cierra al elegir enlace '+width);
+    } else {
+      assert(await evaluate("getComputedStyle(document.querySelector('#menuBoton')).display==='none'&&getComputedStyle(document.querySelector('#menu')).display==='flex'"),'Navegación de escritorio activa '+width);
+    }
     await evaluate("document.querySelector('#precios').scrollIntoView({behavior:'instant',block:'start'})");
     await wait(()=>evaluate("document.body.classList.contains('en-precios')"),'entrada precios '+width);
-    await sleep(250);
-    assert(await evaluate("getComputedStyle(document.querySelector('.wa-flotante')).visibility==='hidden'&&getComputedStyle(document.querySelector('.wa-burbuja')).visibility==='hidden'"),
-      'WhatsApp y burbuja ocultos dentro de precios '+width);
+    // La transición CSS dura 200 ms. Esperar el estado real evita falsos fallos con CPU ocupada.
+    await wait(()=>evaluate("getComputedStyle(document.querySelector('.wa-flotante')).visibility==='hidden'&&getComputedStyle(document.querySelector('.wa-burbuja')).visibility==='hidden'"),
+      'WhatsApp y burbuja ocultos '+width,3500);
+    assert(true,'WhatsApp y burbuja ocultos dentro de precios '+width);
     await evaluate("window.scrollTo({top:0,behavior:'instant'})");
     await wait(()=>evaluate("!document.body.classList.contains('en-precios')"),'salida precios '+width);
-    await sleep(250);
-    assert(await evaluate("getComputedStyle(document.querySelector('.wa-flotante')).visibility==='visible'"),
-      'WhatsApp reaparece al salir '+width);
+    await wait(()=>evaluate("getComputedStyle(document.querySelector('.wa-flotante')).visibility==='visible'"),
+      'WhatsApp reaparece '+width,3500);
+    assert(true,'WhatsApp reaparece al salir '+width);
   }
   await send('Emulation.setDeviceMetricsOverride',{width:390,height:850,deviceScaleFactor:1,mobile:true});
   await send('Page.navigate',{url:site+'#precios'});
   await wait(()=>evaluate("document.readyState!=='loading'&&document.body.classList.contains('en-precios')"),'acceso directo #precios');
-  await sleep(250);
-  assert(await evaluate("getComputedStyle(document.querySelector('.wa-flotante')).visibility==='hidden'"),
-    'Enlace directo #precios oculta WhatsApp');
+  await wait(()=>evaluate("getComputedStyle(document.querySelector('.wa-flotante')).visibility==='hidden'"),
+    'ocultación de WhatsApp en enlace directo',3500);
+  assert(true,'Enlace directo #precios oculta WhatsApp');
   await send('Emulation.setEmulatedMedia',{features:[{name:'prefers-reduced-motion',value:'reduce'}]});
   assert(await evaluate("matchMedia('(prefers-reduced-motion: reduce)').matches&&getComputedStyle(document.querySelector('.wa-flotante')).animationName==='none'"),
     'Movimiento reducido elimina latido');
