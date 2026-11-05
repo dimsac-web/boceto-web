@@ -1,0 +1,22 @@
+name: Comprobaciones basicas del sitio
+
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Obtener codigo del PR
+        uses: actions/checkout@v4
+      - name: Comprobar sintaxis JavaScript
+        run: node --check js/main.js
+      - name: Verificar referencias de recursos locales
+        run: node scripts/check-site.mjs
