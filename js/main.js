@@ -133,12 +133,22 @@ document.addEventListener('pointerdown', (e) => {
   try { cerrada = sessionStorage.getItem('waBurbujaCerrada') === '1'; } catch (e) {}
   if (cerrada) return;
   const VISIBLE_MS = 7000;
-  let apariciones = 0, tOcultar, pendiente = false, enLocales = false;
+  // El contador vive en sessionStorage: recargar la página no reinicia el máximo de 2 apariciones por visita.
+  let apariciones = 0;
+  try { apariciones = Math.min(2, parseInt(sessionStorage.getItem('waApariciones'), 10) || 0); } catch (e) {}
+  if (apariciones >= 2) return;
+  let tOcultar, pendiente = false, enLocales = false, obsLocales = null;
   const libre = () => !document.body.classList.contains('en-precios') && !document.body.classList.contains('en-recorrido');
-  const ocultar = () => { burbuja.classList.remove('visible'); };
+  const ocultar = () => {
+    burbuja.classList.remove('visible');
+    // Si la persona llegó a «Locales» con la primera aún visible, la segunda sale cuando esta se haya ido (nunca dos a la vez).
+    setTimeout(reintentar, 900);
+  };
   const mostrar = () => {
-    if (cerrada || apariciones >= 2 || !libre()) return false;
+    if (cerrada || apariciones >= 2 || !libre() || burbuja.classList.contains('visible')) return false;
     apariciones++;
+    try { sessionStorage.setItem('waApariciones', String(apariciones)); } catch (e) {}
+    if (apariciones >= 2 && obsLocales) obsLocales.disconnect();
     burbuja.classList.add('visible');
     clearTimeout(tOcultar);
     tOcultar = setTimeout(ocultar, VISIBLE_MS);
@@ -154,15 +164,15 @@ document.addEventListener('pointerdown', (e) => {
   }
   function reintentar() { if (pendiente && libre() && (apariciones === 0 || enLocales) && mostrar()) pendiente = false; }
   new MutationObserver(reintentar).observe(document.body, { attributes: true, attributeFilter: ['class'] });
-  setTimeout(() => { if (!mostrar()) pendiente = true; }, 12000);
+  if (apariciones === 0) setTimeout(() => { if (!mostrar()) pendiente = true; }, 12000);
   // Segunda aparición discreta al llegar a «Locales», solo si la primera ya salió.
   const locales = document.getElementById('locales');
   if (locales && 'IntersectionObserver' in window) {
-    const obs = new IntersectionObserver((lista) => {
+    obsLocales = new IntersectionObserver((lista) => {
       enLocales = lista[lista.length - 1].isIntersecting;
-      if (enLocales && apariciones === 1 && !burbuja.classList.contains('visible')) { if (mostrar()) obs.disconnect(); else pendiente = true; }
+      if (enLocales && apariciones === 1 && !mostrar()) pendiente = true; // visible o zona ocupada: se reintenta al ocultarse o al salir de la zona
     }, { threshold: 0.2 });
-    obs.observe(locales);
+    obsLocales.observe(locales);
   }
   cerrar.addEventListener('click', () => {
     cerrada = true; pendiente = false; ocultar(); clearTimeout(tOcultar);
