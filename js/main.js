@@ -122,8 +122,9 @@ document.addEventListener('pointerdown', (e) => {
   items.forEach((el) => obs.observe(el));
 })();
 
-// Burbuja de WhatsApp: aparece a los 5 s, se queda 8 s, se oculta y vuelve cada 25 s.
-// Si la persona la cierra, no vuelve a salir mientras siga en la página (ni al recargar en la misma pestaña).
+// Píldora de WhatsApp («¿Tienes preguntas? | WhatsApp»): máximo 2 apariciones por visita, sin repeticiones infinitas.
+// 1.ª: a los ~12 s. 2.ª: al llegar a «Locales» (más abajo). Nunca sobre el recorrido de fotos ni los precios.
+// Si la persona la cierra, no vuelve a salir en esa visita (sesión de la pestaña).
 (function () {
   const burbuja = document.getElementById('waBurbuja');
   const cerrar = document.getElementById('waCerrar');
@@ -131,20 +132,53 @@ document.addEventListener('pointerdown', (e) => {
   let cerrada = false;
   try { cerrada = sessionStorage.getItem('waBurbujaCerrada') === '1'; } catch (e) {}
   if (cerrada) return;
-  let tOcultar, tMostrar;
-  const ocultar = () => { burbuja.classList.remove('visible'); };
-  const mostrar = () => {
-    if (cerrada) return;
-    burbuja.classList.add('visible');
-    tOcultar = setTimeout(ocultar, 8000);
-    tMostrar = setTimeout(mostrar, 8000 + 25000);
+  const VISIBLE_MS = 7000;
+  // El contador vive en sessionStorage: recargar la página no reinicia el máximo de 2 apariciones por visita.
+  let apariciones = 0;
+  try { apariciones = Math.min(2, parseInt(sessionStorage.getItem('waApariciones'), 10) || 0); } catch (e) {}
+  if (apariciones >= 2) return;
+  let tOcultar, pendiente = false, enLocales = false, obsLocales = null;
+  const libre = () => !document.body.classList.contains('en-precios') && !document.body.classList.contains('en-recorrido');
+  const ocultar = () => {
+    burbuja.classList.remove('visible');
+    // Si la persona llegó a «Locales» con la primera aún visible, la segunda sale cuando esta se haya ido (nunca dos a la vez).
+    setTimeout(reintentar, 900);
   };
-  tMostrar = setTimeout(mostrar, 5000);
+  const mostrar = () => {
+    if (cerrada || apariciones >= 2 || !libre() || burbuja.classList.contains('visible')) return false;
+    apariciones++;
+    try { sessionStorage.setItem('waApariciones', String(apariciones)); } catch (e) {}
+    if (apariciones >= 2 && obsLocales) obsLocales.disconnect();
+    burbuja.classList.add('visible');
+    clearTimeout(tOcultar);
+    tOcultar = setTimeout(ocultar, VISIBLE_MS);
+    return true;
+  };
+  // Zonas donde no debe estorbar: si la persona entra en ellas, la píldora se retira.
+  const recorrido = document.getElementById('recorrido');
+  if (recorrido && 'IntersectionObserver' in window) {
+    new IntersectionObserver((lista) => {
+      document.body.classList.toggle('en-recorrido', lista[lista.length - 1].isIntersecting);
+      reintentar();
+    }, { rootMargin: '-35% 0px -35% 0px' }).observe(recorrido); // solo cuenta cuando ocupa la franja central de la pantalla
+  }
+  function reintentar() { if (pendiente && libre() && (apariciones === 0 || enLocales) && mostrar()) pendiente = false; }
+  new MutationObserver(reintentar).observe(document.body, { attributes: true, attributeFilter: ['class'] });
+  if (apariciones === 0) setTimeout(() => { if (!mostrar()) pendiente = true; }, 12000);
+  // Segunda aparición discreta al llegar a «Locales», solo si la primera ya salió.
+  const locales = document.getElementById('locales');
+  if (locales && 'IntersectionObserver' in window) {
+    obsLocales = new IntersectionObserver((lista) => {
+      enLocales = lista[lista.length - 1].isIntersecting;
+      if (enLocales && apariciones === 1 && !mostrar()) pendiente = true; // visible o zona ocupada: se reintenta al ocultarse o al salir de la zona
+    }, { threshold: 0.2 });
+    obsLocales.observe(locales);
+  }
   cerrar.addEventListener('click', () => {
-    cerrada = true; ocultar(); clearTimeout(tOcultar); clearTimeout(tMostrar);
+    cerrada = true; pendiente = false; ocultar(); clearTimeout(tOcultar);
     try { sessionStorage.setItem('waBurbujaCerrada', '1'); } catch (e) {}
   });
-  // Mientras la persona tiene el cursor o el foco en la burbuja, no se oculta
+  // Mientras la persona tiene el cursor o el foco en la píldora, no se oculta
   ['mouseenter', 'focusin'].forEach(ev => burbuja.addEventListener(ev, () => clearTimeout(tOcultar)));
   ['mouseleave', 'focusout'].forEach(ev => burbuja.addEventListener(ev, () => { clearTimeout(tOcultar); tOcultar = setTimeout(ocultar, 3000); }));
 })();
