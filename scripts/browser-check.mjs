@@ -28,7 +28,7 @@ async function saveFailureScreenshot(reason) {
   if (!result.data) throw new Error('Chrome no devolvió datos de imagen');
   mkdirSync('artifacts', {recursive:true});
   writeFileSync('artifacts/browser-failure.png', Buffer.from(result.data,'base64'));
-  writeFileSync('artifacts/browser-failure.txt', 'Primera prueba fallida: '+reason+'\\nFecha UTC: '+new Date().toISOString()+'\\n');
+  writeFileSync('artifacts/browser-failure.txt', 'Primera prueba fallida: '+reason+'\nFecha UTC: '+new Date().toISOString()+'\n');
   console.log('Captura del fallo guardada en artifacts/browser-failure.png');
 }
 function captureOnFailure(reason) {
